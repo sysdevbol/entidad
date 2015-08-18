@@ -1,0 +1,480 @@
+/*
+#***********************************************************
+#* Estilos CSS de la aplicación [concursal-web]		
+#*															
+#* ¡Atención! Este fichero es interpretado como UTF-8
+#***********************************************************
+*/
+@charset "UTF-8";
+
+/**
+ * ======================================
+ * CORPME specific RPC web styles
+ * ====================================== */
+ 
+/* -----------------------
+ * generics
+ * ----------------------- */
+ .text-indent:before { 
+	content: "\00a0"; 	
+}
+
+div.bloque-info{
+   margin-top: 25px;
+   padding: 10px;		   
+   border-top: 1px solid #AAA;
+   border-left: 1px solid #AAA;	
+   border-bottom: 2px solid #AAA;	
+   border-right: 2px solid #AAA;
+   border-radius: 7px;	
+   -moz-border-radius: 7px;
+   -webkit-border-radius: 7px;
+}
+
+div.bloque-info p.title {
+   color: #31708f;
+   border-bottom: 1px solid #AAA;
+}
+
+div.bloque-tabs{ 	
+   margin-top: 25px;	
+}
+
+div.bloque-tabs #tab-content-resoluciones-procesales,
+div.bloque-tabs #tab-content-resoluciones-concursales,
+div.bloque-tabs #tab-content-acuerdos-extrajudiciales{
+	padding: 10px;
+	border-left:1px solid #DDD;
+}
+
+div.bloque-tabs #tab-content-resoluciones-procesales > p,
+div.bloque-tabs #tab-content-resoluciones-concursales > p,
+div.bloque-tabs #tab-content-acuerdos-extrajudiciales > p {
+	padding-top: 40px;
+	padding-bottom: 40px;
+  	text-align: center;
+  	font-size: 120%;
+  	color: #666;
+}
+
+#result_message {
+	padding-top: 20px;
+	padding-bottom: 0px;
+  	text-align: center;
+  	font-size: 120%;
+  	color: #666;
+}
+
+#real-decreto{
+	margin-top: 50px;
+}
+
+
+/* -----------------------
+ * search form
+ * ----------------------- */ 
+#afectadosSearchForm {
+	margin-bottom: 2em;	
+}
+
+#filtro-busqueda {
+		
+}
+
+#filtro-busqueda p.title{
+	font-size: 120%;
+	font-weight: bold;
+	border-bottom: 1px solid #AAA;
+	margin-bottom: 15px;
+}
+
+#filtro-busqueda label{
+	font-size: 85%;	
+}
+
+#filtro-busqueda #secciones-busqueda #seccion-resoluciones-procesales,
+#filtro-busqueda #secciones-busqueda #seccion-resoluciones-concursales,
+#filtro-busqueda #secciones-busqueda #seccion-acuerdos-extrajudiciales{
+	cursor:pointer;
+}
+
+#filtro-busqueda #secciones-busqueda label{
+  	padding-top: 6px; 
+  	padding-bottom: 10px;
+ 	padding-right:10px;
+  	padding-left:15px;  
+  	width: 98%;
+  	font-weight:normal;
+  	border-radius: 10px;
+  	-moz-border-radius: 10px; 
+  	-webkit-border-radius: 10px;
+}
+
+#filtro-busqueda #secciones-busqueda label.active{
+  color: #fff;
+  background-color: #843ECA;
+}
+
+#filtro-busqueda #secciones-busqueda label.non-active{
+  background-color: #DFCDF1;
+}
+
+#filtro-busqueda #secciones-busqueda label .seccion-num{
+  font-size: 100%;
+  text-transform:uppercase;
+  vertical-align: bottom;
+  line-height: normal;
+}
+
+
+#filtro-busqueda #secciones-busqueda label .seccion-desc{
+  vertical-align: bottom;
+  line-height: normal;
+}
+
+
+#filtro-busqueda #secciones-busqueda input[type="checkbox"]{
+  margin-left: 0px;	
+  width:15px;  
+  height:15px;
+  vertical-align: bottom;
+}
+
+#filtro-busqueda input{
+	/* Comentado pues no funciona con input-feedback de bootstrap
+	border: 1px solid #407CEE;
+	border-color: #C0C8E9
+	*/  
+}
+
+#filtro-busqueda #busqueda-minima{
+	margin-top: 8px; 
+}
+#filtro-busqueda .enlace-busqueda-avanzada{ 
+	color: #2d6ca2;   
+	font-size: 85%;
+}
+
+/* -----------------------
+ * bootstrap tabs badge
+ * ----------------------- */ 
+.nav-tabs > li.active > a .badge {
+  	color: #428bca;
+  	background-color: #ffffff;
+}
+
+
+/* -----------------------
+ * resolucion procesal,
+ * resolucion concursal and
+ * acuerdo extrajudicial
+ * detailed information
+ * ----------------------- */
+#detalle-publicacion{ 
+	margin-top:20px;
+}
+#detalle-publicacion #imprimir{
+	float:right;
+} 
+#detalle-publicacion span.sentencia-firme{
+	letter-spacing: 1.5px;	
+	color: #999;
+	font-weight: bold;		
+	text-transform:uppercase;
+}
+#detalle-publicacion span.fecha-actualizacion{
+	color: #888;	
+	font-size: 90%;
+	font-style:italic;
+	display:block;
+}
+#detalle-publicacion #fecha-emision{
+	font-size: 90%;
+	float:right;
+}
+
+#detalle-publicacion  h2{
+	border-bottom: 1px solid black; 
+	margin: 0px;	
+}
+
+#detalle-publicacion  h4{
+	border-bottom: 1px solid black; 
+	margin-top: 40px;
+	background-color: #173450;
+	padding: 4px 2px 2px 6px;
+}
+#detalle-publicacion  h4.section-title{
+	text-transform:uppercase;	
+	color: #FFF;	
+	font-size: 85%;
+	font-weight: bold;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	letter-spacing: 1.5px;	
+}
+
+#detalle-publicacion div.section-data{
+	margin-bottom: 15px;	
+}
+
+#detalle-publicacion h5{
+	margin-top: 0px;
+  	margin-bottom: 10px;		
+	padding: 3px 6px 3px 0px;
+  	border-bottom: 2px solid #9898DC;   	
+}
+
+#detalle-publicacion h5.sub-section-title{
+	font-weight: bold;
+}
+
+#detalle-publicacion div.sub-section-data{
+	padding: 5px 15px 3px 15px;
+	font-size: 88%;	
+	margin-bottom: 30px;
+}
+
+#detalle-publicacion div.sub-section-data div.iteration{
+	padding-top: 35px;
+}
+
+#detalle-publicacion div.sub-section-data div.item-title{
+	font-weight: bold;
+	margin-bottom: 2px;		
+	padding: 2px 2px 2px 0px;
+	letter-spacing: 1.1px;	
+	border-bottom: 1px solid #B7B7E8;
+	font-size: 94%;	
+}
+#detalle-publicacion div.sub-section-data div.item-content{
+	color: #B74220;
+	letter-spacing: 1.1px;	
+	padding: 2px 2px 2px 0px;	
+	border-bottom: 1px dotted #BBBBBB;
+	font-weight: bold;
+	font-size: 94%;	
+	text-transform:uppercase;	
+	text-align: justify;
+}
+#detalle-publicacion div.sub-section-data div.item-content-large-text{
+	color: #B74220;
+	letter-spacing: 1.1px;	
+	padding: 2px 2px 2px 0px;	
+	border-bottom: 1px dotted #BBBBBB;
+	font-size: 95%;	
+	font-weight: bold;	
+	text-align: justify;
+}
+
+/* -----------------------
+ * login form
+ * ----------------------- */ 
+#login #login-form-panel {
+	margin-top: 4em;
+}
+
+#login button[type=submit] {
+	width: 100%;
+	margin: .5em auto .5em;
+}
+
+#login #recovery-link {
+	text-align: center;
+	margin: .5em auto .5em;
+}
+
+/* -----------------------
+ * password recovery page
+ * ----------------------- */
+#password-recovery #password-recovery-form-panel {
+	margin-top: 4em;
+}
+
+#password-recovery button[type=submit] {
+	width: 100%;
+	margin: .5em auto .5em;
+}
+
+
+/* -----------------------
+ * restricted access advice
+ * ----------------------- */ 
+#restricted-access-advice h1 {
+	border-bottom: 1px solid #AAA;
+	margin-bottom: 15px;
+}
+
+#restricted-access-advice p {
+	text-align: justify;
+	font-size: 15px;	
+	font-style: italic;	
+}
+
+
+/* -----------------------
+ * change password form
+ * ----------------------- */ 
+#password-form {
+	
+}
+
+#password-form button[type=submit] {
+	width: 100%;
+	margin: .5em auto .5em;
+}
+
+/* -----------------------
+ * user creation form
+ * ----------------------- */
+#creation-form fieldset {
+	border-color: #ddd;
+	margin-bottom: 2em;
+}
+
+#creation-form legend {
+	font-size: 1.5em;
+	color: gray;
+	
+	width:inherit; /* Or auto */
+    padding:0 10px; /* To give a bit of padding on the left and right */
+    border-bottom:none;
+}
+
+#creation-form .checkbox {
+	margin-top: 30px;
+	margin-left: 18px;
+}
+
+#creation-form button[type=submit] {
+	width: 100%;
+	margin: .5em auto .5em;
+}
+
+/* -----------------------
+ * contact page
+ * ----------------------- */ 
+.bluetext{
+	color: #428bca;
+}
+.typecontact{
+	font-style: bold;
+	clear: both;
+	display: inline-block;
+	width: 100px;
+	margin-left: 20px;
+  	float: left;
+}
+
+.navbar_footer .navbar-nav >li >a {
+    padding-top: 0px;
+    margin-right: 20px;
+    text-align: right;
+    color: #777777;
+    background-color: transparent;
+}
+
+.navbar-brand >a {
+	color: #777777;
+	text-decoration: none;
+}
+.navbar-brand >a:hover,
+.navbar-brand >a:focus {
+	color: #dddddd;
+	text-decoration: none;
+}
+
+/* Wrapper images
+------------------------------ */
+#wrap nav #logo-justicia{
+  margin-top: 10px;
+  margin-right: 5px;
+  width: 52px;
+  height: 53px; 
+}
+#wrap nav #logo-justicia-min{
+  margin-top: 10px;
+  margin-right: 5px;
+  width: 45px;
+  height: 40px;	
+}
+
+#wrap nav #logo-justicia-med{
+  margin-top: 10px;
+  margin-right: 5px;
+  width: 60px;
+  height: 53px;  	
+}
+.stretch {
+    width:100%;
+    height:100%;
+}
+
+.left {
+	float: left;
+	width: 46%;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+/* Small/Medium screen
+------------------------------ */
+@media (max-width: 767px) {
+  .left {  
+  	width: 95%;
+  }
+  #login-form form{	
+	margin-top: 10px;
+}
+}
+
+.info {
+	color: #31708f;
+	font-size: x-small;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+#listado {
+   margin-top: 0;
+}
+
+.spinner {
+    position: absolute;
+    top: 65%;
+    left: 30%;
+    margin-left: -16px; /* half width of the spinner gif */
+    margin-top: -16px; /* half height of the spinner gif */
+    text-align:center;
+    z-index:1234;
+    overflow: auto;
+    width: 32px; /* width of the spinner gif */
+    height: 34px; /*hight of the spinner gif +2px to fix IE8 issue */
+    color: #88000000;
+    display:none;
+}
+
+/* ***** Paantallas peque�as ***** */
+.visible-handheld {
+	display: none !important;		
+}
+.pull-full {
+	left:0;
+	right:0;
+}
+
+#logos {
+	padding-bottom: 10px;
+}
+
+#headmenus {
+	padding-top: 10px;
+}
+
+#titleaux {
+	padding-top: 25px;
+}
+
+@media (min-width: 992px) {
+	#headmenus {
+		padding-top: 25px;
+	}
+}

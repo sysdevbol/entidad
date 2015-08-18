@@ -1,0 +1,88 @@
+/**
+ * ======================================
+ * CORPME Bootstrap redefinition styles
+ * ====================================== */
+body {  
+  padding-top: 100px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+.table-hover > tbody > tr:hover > td{
+  	background-color: #DDD;
+  	cursor:pointer; 
+}
+
+.navbar-inverse .navbar-brand:hover{
+  	color: #999;
+}
+.btn-primary{
+   	color: #ffffff;
+  	background-color: #4451F2;
+  	border-color: #4451F2;
+}
+.btn-primary:hover, .btn-primary:focus{
+   	color: #ffffff;
+  	background-color: #3846F1;
+  	border-color: #1020E2;
+}
+ .btn-default{
+    color: #ffffff;
+  	background-color: #939AF7;
+  	border-color: #939AF7;
+}
+.btn-default:hover, .btn-default:focus{
+    color: #ffffff;
+  	background-color: #8891F7;
+  	border-color: #8891F7;
+}
+
+.navbar-toggle {
+	padding-top: 20px;
+}
+
+.page-header {
+	margin-top: 0;
+}
+
+.visible-xxs,
+tr.visible-xxs,
+th.visible-xxs,
+td.visible-xxs {
+  display: none !important;
+}
+
+@media (max-width: 499px) {
+  .visible-xxs {
+    display: block !important;
+  }
+  table.visible-xxs {
+    display: table;
+  }
+  tr.visible-xxs {
+    display: table-row !important;
+  }
+  th.visible-xxs,
+  td.visible-xxs {
+    display: table-cell !important;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 767px) {
+  .visible-xxs.visible-xs {
+    display: block !important;
+  }
+  table.visible-xxs.visible-xs {
+    display: table;
+  }
+  tr.visible-xxs.visible-xs {
+    display: table-row !important;
+  }
+  th.visible-xs.visible-xxs,
+  td.visible-xs.visible-xxs {
+    display: table-cell !important;
+  }
+}

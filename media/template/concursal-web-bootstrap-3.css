@@ -1,0 +1,87 @@
+
+/*
+#***********************************************************
+#* Estilos CSS de la aplicación [concursal-web]		
+#*															
+#* ¡Atención! Este fichero es interpretado como UTF-8
+#***********************************************************
+*/
+@charset "UTF-8";
+
+/**
+ * ======================================
+ * CORPME specific RPC 
+ * bootstrap redefinition styles
+ * ====================================== */
+.nav-tabs > li{
+	border-right: 8px solid #FFF;		
+}
+
+.nav-tabs > li > a {
+  	background-color: #DDD;  
+  	color: #173450;
+}
+
+.nav > li > a:hover {
+  	background-color: #CCC;
+}
+ 
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover{
+	background-color: #173450;
+	color: #FFF;	
+}
+
+.jumbotron {
+	background-color: #fafafa;
+	border: 1px solid;
+	border-color: #e8e8e8;
+	padding-top: 32px;
+	padding-bottom: 32px;
+}
+.jumbotron > small {
+  	font-size: 15px;
+}
+
+.jumbotron h1, .jumbotron .h1 {
+  	font-size: 36px;
+}
+
+.jumbotron h1:hover, .jumbotron .h1:hover{
+	color: #428bca;
+}
+ 
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  background-color: transparent;
+}
+
+ .navbar_footer .nav > li > a:hover {
+ 	color: #dddddd;
+  	background-color: transparent;
+ }
+ 
+.navbar_footer .navbar-nav > .active > a,
+.navbar_footer .navbar-nav > .active > a:hover,
+.navbar_footer .navbar-nav > .active > a:focus {
+  color: #FFFFFF;
+  background-color: transparent;
+}
+
+h2, .h2 {
+	font-size: 32px;
+	margin-bottom: 15px;
+}
+
+.col-sm-4 {
+	display: inline-block;
+    float: left;
+    padding-right: 10px;
+}
+
+@media (max-width: 767px) {
+	.col-sm-4 {
+		width: 99%;
+	}
+}

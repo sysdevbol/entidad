@@ -1,0 +1,205 @@
+/*
+#***********************************************************
+#* Estilos CSS de la aplicación [concursal-web]	para pantallas pequeñas	
+#*															
+#* ¡Atención! Este fichero es interpretado como UTF-8
+#***********************************************************
+*/
+@charset "UTF-8";
+
+@media (max-width: 768px), handheld {
+	.nonvisible-handheld {
+		display: none !important;
+	}
+	.visible-handheld {
+		display: block !important;
+	}
+	
+	body {
+		font-size: 14px;
+		padding-top: 70px;
+	}
+	#wrap {
+		margin-top: 0;
+		margin-bottom: 10px;
+		padding-bottom: 0;
+	}
+	#headmenus {
+		padding-top: 15px;
+	}
+	.navbar {
+		margin-bottom: 5px;
+	}
+	.container
+	.jumbotron {
+		padding: 0 5px 5px 5px;
+		margin: 0 5px 0 5px;
+	}
+	
+	.jumbotron h1, .jumbotron .h1 {
+		font-size: 24px;
+	}
+	
+	.jumbotron, .jumbotron > small {
+		font-size: 14px;
+	}
+	
+	.jumbotron p, p {
+		line-height: 1.2;
+		margin: 10px 0 0 0;
+		text-align: justify;
+	}
+	
+	h2 {
+		font-size: 20px;
+	}
+	
+	h3 {
+		font-size: 18px;
+	}
+	h1, h2, h3 {
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	
+	.container {
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+	
+	#footer {
+		padding: 0;
+		margin: 0;
+		height: 0;
+		width: 0;	
+	}
+	
+	#button-paragraph {
+		text-align: center;
+	}
+	
+	#filtro-busqueda {
+		padding: 5px;
+	}
+	.title {
+		margin: 5px 0 5px 0;
+	}
+	#filtro-busqueda label.control-label {
+		display: none;
+	}
+	
+	#filtro-busqueda #busqueda-minima {
+		margin-top: 0;
+	}
+	
+	.form-group {
+		margin-bottom: 5px;
+	}
+	
+	#afectadosSearchForm {
+		margin-bottom: 1em;
+	}
+	p#result_message {
+		margin-top: 0;
+		padding-top: 0;
+	}
+	
+	.table-responsive {
+		overflow-x: hidden;
+	}
+	.table-responsive > .dataTables_wrapper > .table > tbody > tr {
+		width: 100%;
+		border-top: 1px solid #DDD;
+	}
+	.table-responsive > .dataTables_wrapper > .table > tbody > tr > td {
+		font-size: 12px;
+		white-space: normal;
+		width: 100%;
+		border-top: 0;
+	}
+	.table-hover > tbody > tr:hover {
+		background-color: #DDD;
+		cursor: pointer;
+	}
+	.alert {
+		padding: 5px;
+		margin-bottom: 5px;
+	}
+	p.alert {
+		padding: 5px;
+		margin: 5px 0 5px 0;
+	}
+	.alert > ul {
+		padding-left: 20px;
+		font-size: 12px;
+	}
+	div.bloque-info {
+		padding:0;
+	}
+	
+	.col-sm-2 {
+		margin: 0;
+	}
+	
+	.col-sm-3 {
+		margin: 0 10px 0 10px;
+	}
+	.col-sm-3 > p {
+		margin: 5px 0 5px 0;
+	}
+	
+	div.bloque-tabs, .bloque-tabs {
+		margin: 0 5px 0 10px;
+	}
+	
+	#backButton {
+		width: 100%;
+	}
+	
+	#detalle-publicacion {
+		margin-top: 5px;
+	}
+	
+	#detalle-publicacion h4.section-title {
+		margin-top: 30px;
+	}
+	
+	#detalle-publicacion div.sub-section-data {
+		margin-bottom: 10px;
+	}
+	
+	p.text-left.title {
+		padding-left: 5px;
+	}
+	p a.btn {
+		width: 100%;
+	}
+	
+	span.spannedtag {
+		color: #FFF;
+		border-radius: 5px;	
+   		-moz-border-radius: 5px;
+   		-webkit-border-radius: 5px;
+   		padding: 0 1em 0 1em;
+	}
+	span.spannedtag-red {
+		background: #AA3465;
+	}
+	span.spannedtag-green {
+		background: #65AA34;
+	}
+	span.spannedtag-blue {
+		background: #3465AA;
+	}
+	
+	.ellipsize-text {
+		display: block; /* Fallback for non-webkit */
+		display: -webkit-box;
+		max-width: 100%;
+		height: 54px; /* Fallback for non-webkit */
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}

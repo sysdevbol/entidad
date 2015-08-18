@@ -1,0 +1,6 @@
+<?php defined('SYSPATH') or die('No direct script access.'); ?>
+
+2014-01-15 11:58:57 --- ERROR: Database_Exception [ 0 ]: [1267] Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '=' ( SELECT `documentos`.* FROM `documentos` WHERE `cite_original` = 'INF/MOPSV/DGAJ Nº 0439/2013' LIMIT 1 ) ~ MODPATH/database/classes/kohana/database/mysql.php [ 181 ]
+2014-01-15 11:59:04 --- ERROR: Database_Exception [ 0 ]: [1267] Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '=' ( SELECT `documentos`.* FROM `documentos` WHERE `cite_original` = 'INF/MOPSV/DGAA/UF/PPTO Nº 0109/2013' LIMIT 1 ) ~ MODPATH/database/classes/kohana/database/mysql.php [ 181 ]
+2014-01-15 12:01:06 --- ERROR: Database_Exception [ 0 ]: [1267] Illegal mix of collations (latin1_swedish_ci,IMPLICIT) and (utf8_general_ci,COERCIBLE) for operation '=' ( SELECT `documentos`.* FROM `documentos` WHERE `cite_original` = 'INF/MOPSV/DGAA/UF/PPTO Nº 0109/2013' LIMIT 1 ) ~ MODPATH/database/classes/kohana/database/mysql.php [ 181 ]
+2014-01-15 18:18:41 --- ERROR: Database_Exception [ 0 ]: [1065] Query was empty (  ) ~ MODPATH/database/classes/kohana/database/mysql.php [ 181 ]

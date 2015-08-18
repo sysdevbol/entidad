@@ -1,0 +1,15 @@
+<?php defined('SYSPATH') or die('No direct script access.'); ?>
+
+2012-08-13 10:43:37 --- ERROR: Kohana_Exception [ 0 ]: The id_nur property does not exist in the Model_Archivados class ~ MODPATH\orm\classes\kohana\orm.php [ 746 ]
+2012-08-13 10:45:15 --- ERROR: Kohana_Exception [ 0 ]: The id_nur property does not exist in the Model_Archivados class ~ MODPATH\orm\classes\kohana\orm.php [ 746 ]
+2012-08-13 10:45:37 --- ERROR: Kohana_Exception [ 0 ]: The observaciones property does not exist in the Model_Carpetas class ~ MODPATH\orm\classes\kohana\orm.php [ 746 ]
+2012-08-13 10:52:31 --- ERROR: Kohana_Exception [ 0 ]: View variable is not set: archivar ~ SYSPATH\classes\kohana\view.php [ 171 ]
+2012-08-13 11:02:31 --- ERROR: ErrorException [ 8 ]: Undefined index: principal ~ APPPATH\classes\controller\correspondence.php [ 106 ]
+2012-08-13 11:03:57 --- ERROR: ErrorException [ 8 ]: Undefined index: principal ~ APPPATH\classes\controller\correspondence.php [ 106 ]
+2012-08-13 11:04:53 --- ERROR: ErrorException [ 8 ]: Undefined index: principal ~ APPPATH\classes\controller\correspondence.php [ 104 ]
+2012-08-13 11:59:43 --- ERROR: ErrorException [ 8 ]: Undefined property: stdClass::$de_oficina ~ APPPATH\views\correspondencia\enviados.php [ 153 ]
+2012-08-13 12:08:33 --- ERROR: ErrorException [ 8 ]: Undefined property: stdClass::$fecha2 ~ APPPATH\views\correspondencia\enviados.php [ 179 ]
+2012-08-13 12:33:24 --- ERROR: ErrorException [ 2 ]: fopen(media/images/logo_aev.png) [function.fopen]: failed to open stream: No such file or directory ~ APPPATH\vendor\fpdf17\fpdf.php [ 1232 ]
+2012-08-13 12:33:31 --- ERROR: ErrorException [ 2 ]: fopen(media/images/logo_aevivienda.png) [function.fopen]: failed to open stream: No such file or directory ~ APPPATH\vendor\fpdf17\fpdf.php [ 1232 ]
+2012-08-13 18:08:34 --- ERROR: Database_Exception [ 0 ]: [1062] Duplicate entry 'COM/AEV Nº /2012' for key 'codigo' ( INSERT INTO `documentos` (`id_user`, `id_tipo`, `id_proceso`, `id_oficina`, `codigo`, `cite_original`, `nombre_destinatario`, `cargo_destinatario`, `institucion_destinatario`, `nombre_remitente`, `cargo_remitente`, `mosca_remitente`, `referencia`, `contenido`, `fecha_creacion`, `adjuntos`, `copias`, `nombre_via`, `cargo_via`, `titulo`, `id_entidad`) VALUES ('37', '10', '2', '48', 'COM/AEV Nº /2012', 'COM/AEV Nº /2012', 'asdasdas', 'dasdasda', '', 'Arq. Mabel Gomez Jimenez', 'Directora General Ejecutiva', 'MGJ', '', '', '2012-08-13 18:08:33', 'asdasdas', 'asdas', '', '', '', '10') ) ~ MODPATH\database\classes\kohana\database\mysql.php [ 181 ]
+2012-08-13 22:27:30 --- ERROR: Database_Exception [ 0 ]: [1146] Table 'paperwork.nurs' doesn't exist ( SHOW FULL COLUMNS FROM `nurs` ) ~ MODPATH\database\classes\kohana\database\mysql.php [ 181 ]

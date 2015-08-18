@@ -1,0 +1,7 @@
+<?php defined('SYSPATH') or die('No direct script access.'); ?>
+
+2012-09-10 11:18:08 --- ERROR: Kohana_Exception [ 0 ]: The theme property does not exist in the Model_User class ~ MODPATH\orm\classes\kohana\orm.php [ 682 ]
+2012-09-10 11:31:16 --- ERROR: Database_Exception [ 0 ]: [1062] Duplicate entry 'INFV/AEV/DGP/UDE Nº /2012' for key 'codigo' ( INSERT INTO `documentos` (`id_user`, `id_tipo`, `id_proceso`, `id_oficina`, `codigo`, `cite_original`, `nombre_destinatario`, `cargo_destinatario`, `institucion_destinatario`, `nombre_remitente`, `cargo_remitente`, `mosca_remitente`, `referencia`, `contenido`, `fecha_creacion`, `adjuntos`, `copias`, `nombre_via`, `cargo_via`, `titulo`, `id_entidad`) VALUES ('65', '11', '1', '64', 'INFV/AEV/DGP/UDE Nº /2012', 'INFV/AEV/DGP/UDE Nº /2012', '', '', '', 'Luis Angel Rojas Quenallata', 'PROFESIONAL EN DISEÑO', 'LARQ', '', '', '2012-09-10 11:31:16', '', '', '', '', '', '10') ) ~ MODPATH\database\classes\kohana\database\mysql.php [ 181 ]
+2012-09-10 17:57:37 --- ERROR: Kohana_View_Exception [ 0 ]: The requested view documentos/asignar.php could not be found ~ SYSPATH\classes\kohana\view.php [ 268 ]
+2012-09-10 17:57:59 --- ERROR: Kohana_View_Exception [ 0 ]: The requested view documentos/asignar.php could not be found ~ SYSPATH\classes\kohana\view.php [ 268 ]
+2012-09-10 17:58:51 --- ERROR: Kohana_View_Exception [ 0 ]: The requested view documentos/asignar.php could not be found ~ SYSPATH\classes\kohana\view.php [ 268 ]

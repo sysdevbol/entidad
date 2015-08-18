@@ -1,0 +1,16 @@
+<?php defined('SYSPATH') or die('No direct script access.'); ?>
+
+2012-07-09 10:33:14 --- ERROR: ErrorException [ 8 ]: Undefined variable: subtitulo ~ APPPATH\views\templates\layout.php [ 34 ]
+2012-07-09 10:33:15 --- ERROR: ErrorException [ 8 ]: Undefined variable: subtitulo ~ APPPATH\views\templates\layout.php [ 34 ]
+2012-07-09 10:33:22 --- ERROR: ErrorException [ 8 ]: Undefined variable: descripcion ~ APPPATH\views\templates\titulo.php [ 1 ]
+2012-07-09 10:33:23 --- ERROR: ErrorException [ 8 ]: Undefined variable: descripcion ~ APPPATH\views\templates\titulo.php [ 1 ]
+2012-07-09 10:33:50 --- ERROR: ErrorException [ 8 ]: Undefined variable: titulo ~ APPPATH\views\templates\titulo.php [ 1 ]
+2012-07-09 10:33:51 --- ERROR: ErrorException [ 8 ]: Undefined variable: titulo ~ APPPATH\views\templates\titulo.php [ 1 ]
+2012-07-09 10:37:26 --- ERROR: ErrorException [ 2 ]: array_merge() [function.array-merge]: Argument #1 is not an array ~ APPPATH\classes\controller\defaulttemplate.php [ 57 ]
+2012-07-09 10:37:27 --- ERROR: ErrorException [ 2 ]: array_merge() [function.array-merge]: Argument #1 is not an array ~ APPPATH\classes\controller\defaulttemplate.php [ 57 ]
+2012-07-09 11:35:28 --- ERROR: ErrorException [ 8 ]: Undefined variable: username ~ APPPATH\views\templates\layout.php [ 28 ]
+2012-07-09 12:21:35 --- ERROR: ErrorException [ 4 ]: syntax error, unexpected T_ENDFOREACH ~ APPPATH\views\templates\menutop.php [ 28 ]
+2012-07-09 12:34:17 --- ERROR: ErrorException [ 8 ]: Undefined index: submenu ~ APPPATH\views\templates\menutop.php [ 23 ]
+2012-07-09 14:32:27 --- ERROR: ErrorException [ 8 ]: Undefined index: submenu ~ APPPATH\views\templates\menutop.php [ 21 ]
+2012-07-09 15:00:10 --- ERROR: ErrorException [ 8 ]: Undefined variable: menutitulo ~ APPPATH\views\templates\layout_inicio.php [ 38 ]
+2012-07-09 17:56:36 --- ERROR: ErrorException [ 8 ]: Undefined variable: oficina ~ APPPATH\views\user\info.php [ 4 ]

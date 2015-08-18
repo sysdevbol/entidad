@@ -1,0 +1,18 @@
+<?php defined('SYSPATH') or die('No direct script access.'); ?>
+
+2012-08-06 07:32:06 --- ERROR: ErrorException [ 8 ]: Undefined variable: rs ~ APPPATH\classes\controller\download.php [ 16 ]
+2012-08-06 07:32:41 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for archivos/2012_03/4f775da9ef117Sistema_de_Correspondencia.docx ~ APPPATH\classes\controller\download.php [ 21 ]
+2012-08-06 07:32:46 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for archivos/2012_03/4f775da9ef117Sistema_de_Correspondencia.docx ~ APPPATH\classes\controller\download.php [ 21 ]
+2012-08-06 07:32:48 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for archivos/2012_03/4f775da9ef117Sistema_de_Correspondencia.docx ~ APPPATH\classes\controller\download.php [ 21 ]
+2012-08-06 07:33:02 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for /archivos/2012_03/4f775da9ef117Sistema_de_Correspondencia.docx ~ APPPATH\classes\controller\download.php [ 21 ]
+2012-08-06 07:33:03 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for /archivos/2012_03/4f775da9ef117Sistema_de_Correspondencia.docx ~ APPPATH\classes\controller\download.php [ 21 ]
+2012-08-06 07:33:04 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for /archivos/2012_03/4f775da9ef117Sistema_de_Correspondencia.docx ~ APPPATH\classes\controller\download.php [ 21 ]
+2012-08-06 07:33:05 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for /archivos/2012_03/4f775da9ef117Sistema_de_Correspondencia.docx ~ APPPATH\classes\controller\download.php [ 21 ]
+2012-08-06 07:33:33 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for /archivos/2012_04/4f7ed181194172011-00006.pdf ~ APPPATH\classes\controller\download.php [ 21 ]
+2012-08-06 07:33:46 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for /archivos/2012_07/500da9b5df0cc2012-00007.pdf ~ APPPATH\classes\controller\download.php [ 21 ]
+2012-08-06 07:33:57 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for /archivos/2012_07/50081e75b9a2dsymfony2-es.pdf ~ APPPATH\classes\controller\download.php [ 21 ]
+2012-08-06 07:34:38 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for /archivos/2012_07/50081e75b9a2dsymfony2-es.pdf ~ APPPATH\classes\controller\download.php [ 21 ]
+2012-08-06 07:34:40 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for /archivos/2012_07/50081e75b9a2dsymfony2-es.pdf ~ APPPATH\classes\controller\download.php [ 21 ]
+2012-08-06 07:35:01 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for /archivos/2012_07/50081e75b9a2dsymfony2-es.pdf ~ APPPATH\classes\controller\download.php [ 22 ]
+2012-08-06 07:35:51 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for ../../archivos/2012_07/50081e75b9a2dsymfony2-es.pdf ~ APPPATH\classes\controller\download.php [ 22 ]
+2012-08-06 07:35:57 --- ERROR: ErrorException [ 2 ]: filesize() [function.filesize]: stat failed for ../archivos/2012_07/50081e75b9a2dsymfony2-es.pdf ~ APPPATH\classes\controller\download.php [ 22 ]

@@ -1,0 +1,50 @@
+*{padding: 0;margin: 0;}
+/*body,html { padding:0; margin:0;height: 100%;/* background: #E3D4C8;*/ /*background: #fff;}*/
+body,html { padding:0; margin:0;height: 100%; 
+    background: #E3D4C8  url(/media/images/fondo2.jpg) no-repeat center center fixed;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;     
+}
+body,table {color: #222;font: 12px/13px Arial, Helvetica;  overflow:hidden; }
+img,a img {border: 0;text-decoration: none;}
+#top{height: 117px;line-height: 15px;padding: 0;margin: 0;border-bottom: 1px solid #111; background-color: #F0E9E3; }
+#top h1{width: 138px;height: 20px;background: transparent ;display: block;text-indent: -9999px;}
+#top h1 a{display: block;}
+#lateral{width: 165px;float: left;background: transparent ;  z-index: 2; position: relative; }
+#content{font-size: 11px;margin-left: 165px;background: #fff; border-left: 1px solid #ccc;  }
+#content #render{height: 100%;overflow: auto;padding: 5px;}
+#toggler{width: 1px;border-left: 1px solid #ccc;border-right: 1px solid #ccc;background: #E9E9EB url("../images/toggler_bg.gif") no-repeat left center;float: left;}
+#toggler:hover{background: #D9D9DC url("../images/toggler_bg.gif") no-repeat -25px center;cursor: pointer;}
+#toggler.off{background: #c5c5c5 url("../images/toggler_off_bg.gif") no-repeat left center;margin-left: 0;}
+#toggler.off:hover{background: #C5C5C5 url("../images/toggler_off_bg.gif") no-repeat -25px center;margin-left: 0;}.sp{ font-weight: 300; color: #111;    }
+div.widget{  float: left; margin: 3px;  }
+div.widget .title{padding: 5px; border: 1px solid #ccc; font-size: 16px; }
+div.widget .content{ color: #333; font-weight: normal; border: 1px solid #e2e2e2; background-color: #fff; min-height: 200px; }
+#tab {
+	width:12px;
+	height:100px;
+	position:fixed;
+	left:0px;
+	top:180px;
+	display:block;
+	cursor:pointer;
+        background: #111; 
+        opacity: .7;
+}
+#panel {
+        position:fixed;
+	left:0px;
+	top:118px;
+	background-color:#333;
+	height:400px;
+	width:0;/*new line*/
+        z-index: 9999999;
+}
+#panel .content_panel {
+	width:200px;
+	margin-left:20px;
+}
+#themeName{ font-size: 14px; background: #111; color: #fff; line-height: 25px;  display: block; height: 25px; text-align: center;}

@@ -1,0 +1,4 @@
+<?php defined('SYSPATH') or die('No direct script access.'); ?>
+
+2015-08-08 14:19:45 --- ERROR: Database_Exception [ 0 ]: [1062] Duplicate entry 'condarmi_srl@hotmail.com' for key 'uniq_username' ( INSERT INTO `users` (`username`, `password`, `nombre`, `email`, `nivel`) VALUES ('condarmi_srl@hotmail.com', '32efb6ffedd29b2a034e3dc5a9bfa750288789ab0db4059c146b13b768fcbcf5', 'EMPRESA CONDARMI S.R.L. CONSTRUCTORA Y CONSULTORA', 'condarmi_srl@hotmail.com', 2) ) ~ MODPATH/database/classes/kohana/database/mysql.php [ 181 ]
+2015-08-08 15:19:36 --- ERROR: Database_Exception [ 0 ]: [1062] Duplicate entry 'elhorcon@gmail.com' for key 'uniq_username' ( INSERT INTO `users` (`username`, `password`, `nombre`, `email`, `nivel`) VALUES ('elhorcon@gmail.com', '3ed7cdc9bf8799069a87341ec8efb1cf842c16e76ccc64942eeb9273b0bd2de9', 'EMPRESA CONSTRUCTORA EL HORCON   -  Oscar salazar alvarez.', 'elhorcon@gmail.com', 2) ) ~ MODPATH/database/classes/kohana/database/mysql.php [ 181 ]

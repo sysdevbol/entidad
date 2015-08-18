@@ -1,0 +1,4 @@
+<?php defined('SYSPATH') or die('No direct script access.'); ?>
+
+2014-10-29 09:12:16 --- ERROR: Database_Exception [ 0 ]: [1065] Query was empty (  ) ~ MODPATH/database/classes/kohana/database/mysql.php [ 181 ]
+2014-10-29 23:20:43 --- ERROR: Database_Exception [ 0 ]: [1064] You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'i-2014-01893'%' OR d.cite_original LIKE '%'i-2014-01893'%' OR d.referencia LIKE ' at line 1 ( SELECT COUNT(*) as count  FROM documentos d  WHERE d.nur LIKE '%'i-2014-01893'%' OR d.cite_original LIKE '%'i-2014-01893'%' OR d.referencia LIKE '%'i-2014-01893'%'  ) ~ MODPATH/database/classes/kohana/database/mysql.php [ 181 ]
