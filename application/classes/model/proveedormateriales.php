@@ -11,6 +11,13 @@ class Model_Proveedormateriales extends ORM{
                 ORDER BY orden ASC";
         return db::query(Database::SELECT, $sql)->execute()->as_array();
     }
+    public function listarinsumosproveedor($ide) {
+        $sql = "SELECT mr.id as idm,descripcion, unidad,orden,pm.id as idp,empresa_id,material_id,departamentos,municipios 
+                FROM insumosrequeridos mr
+                LEFT JOIN proveedormateriales pm ON mr.id = pm.material_id AND pm.empresa_id = $ide
+                ORDER BY orden ASC";
+        return db::query(Database::SELECT, $sql)->execute()->as_array();
+    }
     
     public function deleteByMateriales($ide)	{
 			$sql="DELETE FROM proveedormateriales WHERE empresa_id=$ide ";

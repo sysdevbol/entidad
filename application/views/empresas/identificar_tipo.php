@@ -177,9 +177,15 @@ a,a:hover,a:link,a:active,a:focus,
                         <ul class="shortcuts">
 
                              <?php
+                             $sw=0;
                             foreach($tipo as $c):
                             ?>
                             <li class="events">
+                              <?php
+                              if($c['id'] == 9 or $c['id'] == 19){
+                             $sw = 1;
+                            }
+                              ?>
         					       <a href="<?php echo $c['controlador']."/".$c['id']?>">
                                         <span class="shortcuts-icon iconsi-help"></span>
                                         
@@ -188,10 +194,15 @@ a,a:hover,a:link,a:active,a:focus,
                                     
         					</li>
                             <?php
+                            
                             endforeach;
                             ?>
                         </ul>
-                        
+                        <?php
+                        if($sw == 1){
+                          echo '<span style="font-size:12px">Nota: La clasificacion <strong>"Materiales de construccion"</strong> tiene estricta relacion con proyectos de construccion de viviendas y la clasificacion <strong>"Insumos y Servicios"</strong> esta referido a gastos de funcionamiento.</span>';
+                        }
+                        ?>
                       </article>
                       <a href="javascript:history.back(1)" style="float: right;">Volver Atr&aacute;s</a>  
                         

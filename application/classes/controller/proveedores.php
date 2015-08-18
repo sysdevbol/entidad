@@ -30,6 +30,143 @@ class Controller_Proveedores extends Controller_TemplateEmpresasLibre{
              ->bind('tipo', $resultTipoclasificacion);
     }
     
+
+    public function action_registrarproveedor2($tipo){
+        
+        $vista = 'proveedores/registro_proveedor';
+
+        if (isset($_POST['guardar'])) {
+
+            $emailuniq = $_POST['mail'];
+            $oEmpresas = new Model_Empresas();
+            $resp = $oEmpresas->emailrepetido($emailuniq);
+            $oconsultores = new Model_Consultores();
+            $resp1 = $oconsultores->emailrepetidoconsultor($emailuniq);
+            if($resp and $resp1){
+                    $empresas = ORM::factory('empresas');
+                    $empresas->nombre_proponente = $_POST['nombre_proponente'];
+                    $empresas->pais = $_POST['pais'];
+                    if($_POST['pais']!=1)
+                    $empresas->ciudad = 10;
+                    else
+                    $empresas->ciudad = $_POST['ciudad'];
+
+                    $empresas->direccion = $_POST['direccion'];
+                    $empresas->nit = $_POST['nit'];
+                    list ( $dia, $mes, $anio ) = explode ( "/",$_POST['nit_fecha_expedicion']);
+                    $fecha = $anio . "-" . $mes . "-" . $dia;
+                    $empresas->nit_fecha_expedicion = $fecha;
+                    $empresas->matricula = $_POST['matricula'];
+                    list ( $dia, $mes, $anio ) = explode ( "/",$_POST['matricula_fecha_expedicion']);
+                    $fecha = $anio . "-" . $mes . "-" . $dia;
+                    $empresas->matricula_fecha_expedicion = $fecha;
+                    
+                    $empresas->paterno_representante =  $_POST['paterno_representante'];
+                    $empresas->materno_representante = $_POST['materno_representante'];
+                    $empresas->nombres_representante = $_POST['nombres_representante'];
+                    $empresas->ci_representante = $_POST['ci_representante'];
+                    $empresas->ci_expedido = $_POST['ci_expedido'];
+                    
+                    $empresas->testimonio = $_POST['testimonio'];
+                    $empresas->testimonio_emision = $_POST['testimonio_emision'];
+                    list ( $dia, $mes, $anio ) = explode ( "/",$_POST['testimonio_fecha_expedido']);
+                    $fecha = $anio . "-" . $mes . "-" . $dia;
+                    $empresas->testimonio_fecha_expedido = $fecha;
+                    $empresas->fax =$_POST['fax'];
+                    $empresas->telefonos = $_POST['telefonos'];
+                    $empresas->celular = $_POST['celular'];
+                    $empresas->mail = $_POST['mail'];
+                    $empresas->mail_opcional = $_POST['mail_opcional'];
+                    $empresas->estado = 1;
+                    $empresas->tipo = $tipo;
+                    $empresas->fecha_insert = date('Y-m-d H:m:i');
+                    $empresas->save();
+
+                    $passregistro = $this->encrypt($empresas->id."#"."a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD","a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD");
+
+
+                    $destinatario = $_POST['mail'];
+                    $asunto = "Confirmación de registro de Entidad Ejecutora  - AEVIVIENDA";
+                    $cuerpo = '
+                    <html>
+                    <head>
+                    <title>Confirmación de registro de Entidad Ejecutora  - AEVIVIENDA</title>
+                    </head>
+                    <body>
+                    <table style="width: 813px; height: 240px;" border="0">
+                    <tbody>
+                    <tr>
+                    <td><span style="font-family: arial,helvetica,sans-serif; font-size: large;">Se&ntilde;ores:</span></td>
+                    <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                    <td><strong><span style="font-size: large;"><span style="font-family: arial,helvetica,sans-serif;">'.$_POST['nombre_proponente'].'</span>:</span></strong></td>
+                    <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                    <td style="text-align: justify;">
+                    <p><span style="font-family: arial,helvetica,sans-serif; font-size: large;">Bienvenido a la Agencia Estatal de Vivienda</p>
+                    <p><span style="font-family: arial,helvetica,sans-serif; font-size: large;">Para Finalizar el registro, ingrese al siguiente enlace ó copie el mismo en un navegador Web:</p> 
+                    <p><span style="background-color: #ffffff;"><strong><a href="http://entidad.aevivienda.gob.bo/proveedores/registroexitoso/'.$passregistro.'">http://entidad.aevivienda.gob.bo/proveedores/registroexitoso/'.$passregistro.'</a></p>
+                    <p><span style="background-color: #ffffff;">Por favor no responda a este mensaje. En caso de que se le presente alguna duda o inquietud, puede contactarnos a traves de la direccion electronica </span></strong></span>info@aevivienda.gob.bo<br /></span></p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p><span style="text-decoration: underline;"><em><span style="font-family: arial,helvetica,sans-serif; font-size: small;">Notificaci&oacute;n autom&aacute;tica generada por la Agencia Estatal de Vivienda.</span></em></span></p>
+                    </td>
+                    <td>&nbsp;</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    </body>
+                    </html>
+                    ';
+                    $headers = "MIME-Version: 1.0\r\n";
+                    $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
+                    $headers .= "From: Unidad de Sistemas <sistemas@aevivienda.gob.bo>\r\n";
+                    //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
+                    //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
+                    $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
+                    mail($destinatario,$asunto,$cuerpo,$headers);
+
+                    $this->request->redirect('proveedores/confirmaciones/'.$passregistro);
+            }else{
+                echo '<script>alert("La direccion de correo ya fue registrada.");</script>';
+            }    
+                
+
+        }
+
+
+
+        $oPaises = ORM::factory('paises')->find_all();
+        $paises = array();
+        foreach ($oPaises as $p) {
+        $paises[$p->id] = $p->pais;
+        }
+        $oCiudades = ORM::factory('ciudades')->find_all();
+        $ciudades = array();
+        foreach ($oCiudades as $d) {
+        $ciudades[$d->id] = $d->ciudad;
+        }
+        $oDepartamentos = ORM::factory('departamentos')->find_all();
+        $departamentos = array();
+        foreach ($oDepartamentos as $d) {
+        $departamentos[$d->id] = $d->departamento;
+        }
+        $this->template->title.='::Registro de Proveedores';
+        $this->template->titulo='';
+        $this->template->descripcion = 'Detalle del Sistema';
+
+
+        $this->template->content = View::factory($vista)
+        ->bind('paises', $paises)
+        ->bind('departamentos', $departamentos)
+        ->bind('ciudades', $ciudades);
+    }
+
+
     public function action_registrarproveedor($tipo){
         
         $vista = 'proveedores/registro_proveedor';

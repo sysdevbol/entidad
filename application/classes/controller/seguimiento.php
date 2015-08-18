@@ -699,6 +699,9 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
         }
         public function action_materiales(){
             $vista = 'proveedores/lista_materiales';
+            $oEmpresas = new Model_Empresas();
+            $resultDatos = $oEmpresas->datosempresacuenta($this->user->username);
+            $resultDatos=$resultDatos[0];
             if(isset($_POST['guardar'])){
                 $_obj=New Model_Proveedormateriales();
 				$_obj->deleteByMateriales($_POST['ide']);
@@ -718,7 +721,12 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                     $materiales->material_id = $v;
                     $materiales->departamentos = $valorDep;
                     $materiales->municipios = $valorMun;
-                    $materiales->tipo = 1;
+                    if($resultDatos['tipo'] == '9'){
+                        $materiales->tipo = 1;
+                    }elseif ($resultDatos['tipo'] == '19') {
+                        $materiales->tipo = 2;
+                    }
+                    
                     $materiales->save();    
                         
                 }
@@ -749,11 +757,13 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
             }
             
             
-            $oEmpresas = new Model_Empresas();
-            $resultDatos = $oEmpresas->datosempresacuenta($this->user->username);
-            $resultDatos=$resultDatos[0];
+            
             $oProvMateriales = new Model_Proveedormateriales();
-            $oMateriales = $oProvMateriales->listarmaterialesproveedor($resultDatos['id']);
+            if($resultDatos['tipo'] == '9'){
+                $oMateriales = $oProvMateriales->listarmaterialesproveedor($resultDatos['id']);
+            }elseif ($resultDatos['tipo'] == '19') {
+                $oMateriales = $oProvMateriales->listarinsumosproveedor($resultDatos['id']);
+            }
             $this->template->content = View::factory($vista)
                                        ->bind('user', $user)
                                        ->bind('ide',$resultDatos['id'])
