@@ -53,6 +53,15 @@ class Model_Sociosaccidental extends ORM{
         $update1 = "UPDATE sociosaccidental set sociosaccidental.lider = 'Si' where sociosaccidental.id_empresa_acc='$idempresa' and sociosaccidental.id='$id'";
         mysql_query($update1);
      }
+     public function verificasociosacc($idempresa){
+        $sql = "SELECT * from sociosaccidental where id_empresa_acc = '$idempresa' and id_empresa_socios > 0";
+        $reg = @mysql_fetch_assoc(mysql_query($sql));
+        if(!empty($reg['id'])){
+            return "ok";
+        }else{
+            return "incompleto";
+        }
+    }
      
      
     

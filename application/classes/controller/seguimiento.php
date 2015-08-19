@@ -301,7 +301,11 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
     public function action_genregistroconsultor(){
             $vista = 'empresas/generar_registroconsultor';
             if(isset($_POST['submit']) and $_POST['submit'] == "Generar e Imprimir Registro"){
+                $estadoconsultor = $_POST['estado'];
                 $idcons = $_POST['idcons'];
+                if($estadoconsultor == 4){
+                  echo '<script>alert("Usted esta generando el certificado nuevamente, necesita dirigirse a la departamental para ser "Habilitado".)</script>';  
+                }
                 $consul = ORM::factory('consultores',$idcons);
                 $consul->estado = "3";
                 $consul->save();
@@ -310,6 +314,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                 //echo '<script>alert("GENERA!!!!!")</script>';    
                 //echo '<script>location.href = "/reporte2.php/?ide="+'.$idempresa.';</script>';    
                 $this->request->redirect('reporte_consultor.php?ide='.$idcons); 
+
             }
             $this->template->title.='Generar e imprimir Registro';
             $this->template->descripcion = '';
@@ -441,6 +446,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
             $vista = 'empresas/generar_registro';
             if(isset($_POST['submit']) and $_POST['submit'] == "Generar e Imprimir Registro"){
                 $idempresa = $_POST['ide'];
+                $estadoempresa = $_POST['estado'];
                 //verificadatos
                 $oEmpresas = new Model_Empresas();
                 $res = $oEmpresas->verificadatos($idempresa);
@@ -459,6 +465,9 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                         if($res2 != 'ok'){
                             echo '<script>alert("Deberia tener al menos un Departamento de interes seleccionado.")</script>';    
                         }else{
+                            if($estadoempresa == 4){
+                              echo '<script>alert("Usted esta generando el certificado nuevamente, necesita dirigirse a la departamental para ser "Habilitado".)</script>';  
+                            }
                             //genera registro
                             $pin = 100000+$idempresa;
                             $empresapin = ORM::factory('empresas',$idempresa);
@@ -490,6 +499,61 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
             $this->template->content = View::factory($vista)
                                        ->bind('user', $user)
                                        ->bind('ide',$resultDatos['id'])
+                                       ->bind('estado',$resultDatos['estado'])
+                                       ->bind('idu', $idu);
+        }
+
+        public function action_genregistroacc(){
+            $vista = 'empresas/generar_registro';
+            if(isset($_POST['submit']) and $_POST['submit'] == "Generar e Imprimir Registro"){
+                $idempresa = $_POST['ide'];
+                $estadoempresa = $_POST['estado'];
+                //verificadatos
+                $oEmpresas = new Model_Empresas();
+                $res = $oEmpresas->verificadatos($idempresa);
+                if($res != 'ok'){
+                    echo '<script>alert("Verifique sus Datos Generales.")</script>';
+                }else{
+                    //verifica socios
+                    $oexperiencia = new Model_Sociosaccidental();
+                    $res1 = $oexperiencia->verificasociosacc($idempresa);
+                    if($res1 != 'ok'){
+                        echo '<script>alert("Deberia tener al menos un socio registrado.")</script>';
+                    }else{
+                        if($estadoempresa == 4){
+                          echo '<script>alert("Usted esta generando el certificado nuevamente, necesita dirigirse a la departamental para ser "Habilitado".)</script>';  
+                        }
+                        //genera registro
+                        $pin = 100000+$idempresa;
+                        $empresapin = ORM::factory('empresas',$idempresa);
+                        $empresapin->pin_empresa = $pin;
+                        $empresapin->estado = "3";
+                        $empresapin->save();
+                        //$oEmpresas1 = new Model_Empresas();
+                        //$re=$oEmpresas1->generapin($idempresa);
+                        //echo '<script>alert("GENERA!!!!!")</script>';    
+                        echo '<script>location.href = "/reporte_entidad.php/?ide="+'.$idempresa.';</script>';
+                    }
+                }
+                
+                
+            }
+            $this->template->title.='Generar e imprimir Registro';
+            $this->template->descripcion = '';
+            $this->template->styles = array(
+                'media/jqwidgets/styles/jqx.darkblue.css' => 'all',
+                'media/jqwidgets/styles/jqx.office.css' => 'all',
+                'media/jqwidgets/styles/jqx.base.css' => 'all',
+            );
+            $user = $this->user;
+            $idu = $this->user->id;
+            $oEmpresas = new Model_Empresas();
+            $resultDatos = $oEmpresas->datosempresacuenta($this->user->username);
+            $resultDatos=$resultDatos[0];
+            $this->template->content = View::factory($vista)
+                                       ->bind('user', $user)
+                                       ->bind('ide',$resultDatos['id'])
+                                       ->bind('estado',$resultDatos['estado'])
                                        ->bind('idu', $idu);
         }
 
@@ -778,6 +842,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
             $vista = 'proveedores/generar_registro';
             if(isset($_POST['submit']) and $_POST['submit'] == "Generar e Imprimir Registro"){
                 $idempresa = $_POST['ide'];
+                $estadoempresa = $_POST['estado'];
                 //verificadatos
                 $oEmpresas = new Model_Empresas();
                 $res = $oEmpresas->verificadatos($idempresa);
@@ -796,6 +861,9 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                         if($res2 != 'ok'){
                             echo '<script>alert("Deberia tener al menos un Departamento de interes seleccionado.")</script>';    
                         }else{
+                            if($estadoempresa == 4){
+                              echo '<script>alert("Usted esta generando el certificado nuevamente, necesita dirigirse a la departamental para ser "Habilitado".)</script>';  
+                            }
                             //genera registro
                             $pin = 100000+$idempresa;
                             $empresapin = ORM::factory('empresas',$idempresa);
@@ -828,6 +896,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
             $this->template->content = View::factory($vista)
                                        ->bind('user', $user)
                                        ->bind('ide',$resultDatos['id'])
+                                       ->bind('estado',$resultDatos['estado'])
                                        ->bind('idu', $idu);
         }
         /*fin proveeedores*/
