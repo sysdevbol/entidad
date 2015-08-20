@@ -75,6 +75,10 @@ class Model_Consultores extends ORM{
             return "sinhabilitar";
         }
     }
+    public function guardaarearubro($id,$arearubros){
+        $update = "UPDATE consultores set id_rubroarea = '$arearubros' where id = '$id'";
+        mysql_query($update);
+    }
     
 }
 

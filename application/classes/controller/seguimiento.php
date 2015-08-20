@@ -332,7 +332,48 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                                        ->bind('user', $user)
                                        ->bind('idu', $idu)
                                        ->bind('datosC', $resultDatos);
-        }    
+        }
+
+    public function action_rubrosareas(){
+            $vista = 'empresas/rubroarea';
+            if(isset($_POST['guardar']) and $_POST['guardar'] == "Guardar Seleccionados"){
+                //print_r($_POST);
+                if(!empty($_POST['reg'])){
+                    $registros = array_keys($_POST['reg']);
+                    $registros = implode(",", $registros);
+                    //$registros = explode(",", $registros);
+                    //print_r($registros);
+                    //print_r($_POST['idprop']);
+                    //print_r($_POST['idcla']);
+                    if($_POST['idcla'] == 3){
+                        $modelcons = new Model_Consultores();
+                        $modelcons->guardaarearubro($_POST['idprop'],$registros);
+                    }elseif ($_POST['idcla'] == 1 OR $_POST['idcla'] == 2) {
+                        //$modeldeptosinteres = new Model_Departamentosinteres();
+                        //$modeldeptosinteres->guardardeptosinteres($registros,$_POST['idprop']);
+                    }
+                    echo '<script>alert("Su seleccion fue guardada correctamente!!!");</script>';
+                }else{
+                    echo '<script>alert("Eliga al menos un Area o Rubro.");</script>';
+                }
+            }
+            $this->template->title.='Seleccione las areas o rubros de su interes';
+            $this->template->descripcion = 'Seleccione las areas';
+            $this->template->styles = array(
+                'media/jqwidgets/styles/jqx.darkblue.css' => 'all',
+                'media/jqwidgets/styles/jqx.office.css' => 'all',
+                'media/jqwidgets/styles/jqx.base.css' => 'all',
+            );
+            $user = $this->user;
+            $idu = $this->user->id;
+            $oconsultores = new Model_Consultores();
+            $resultDatos = $oconsultores->datosconsultor($idu);
+            $resultDatos = $resultDatos[0];
+            $this->template->content = View::factory($vista)
+                                       ->bind('user', $user)
+                                       ->bind('idu', $idu)
+                                       ->bind('datosC', $resultDatos);
+        }        
 
 
     public function action_datosgenerales(){
@@ -793,6 +834,10 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                     
                     $materiales->save();    
                         
+                }
+                if($resultDatos['tipo'] == '19'){
+                    $moempresas = new Model_Empresas();
+                    $moempresas->guardarubroinsumos($_POST['ide']);
                 }
                 
                 

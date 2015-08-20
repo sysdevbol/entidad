@@ -202,6 +202,13 @@ class Model_Empresas extends ORM{
             return "sinhabilitar";
         }
     }
+    public function guardarubroinsumos($id){
+        $update = "UPDATE empresas set id_rubroarea = (SELECT GROUP_CONCAT(rubroarea.id) from proveedormateriales 
+        INNER JOIN Insumosrequeridos on proveedormateriales.material_id = Insumosrequeridos.id
+        INNER JOIN rubroarea on Insumosrequeridos.descripcion = rubroarea.nombre
+        where proveedormateriales.empresa_id = '$id' and proveedormateriales.tipo = '2') where empresas.id = '$id'";
+        mysql_query($update);
+    }
     
 }
 

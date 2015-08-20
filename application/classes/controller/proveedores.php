@@ -79,6 +79,7 @@ class Controller_Proveedores extends Controller_TemplateEmpresasLibre{
                     $empresas->mail_opcional = $_POST['mail_opcional'];
                     $empresas->estado = 1;
                     $empresas->tipo = $tipo;
+                    $empresas->id_rubroarea = 48;
                     $empresas->fecha_insert = date('Y-m-d H:m:i');
                     $empresas->save();
 
@@ -215,6 +216,7 @@ class Controller_Proveedores extends Controller_TemplateEmpresasLibre{
                     $empresas->mail_opcional = $_POST['mail_opcional'];
                     $empresas->estado = 1;
                     $empresas->tipo = $tipo;
+                    $empresas->id_rubroarea = 17;
                     $empresas->fecha_insert = date('Y-m-d H:m:i');
                     $empresas->save();
 

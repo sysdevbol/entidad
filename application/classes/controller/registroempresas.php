@@ -178,6 +178,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $consultores->mail = $_POST['mail'];
                 $consultores->estado = 1;
                 $consultores->tipo = $tipo;
+                $consultores->id_rubroarea = 11;
                 $consultores->save();
                 $passregistro = $this->encrypt($consultores->id."#"."a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD","a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD");
 
@@ -397,6 +398,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $consultores->mail = $_POST['mail'];
                 $consultores->estado = 1;
                 $consultores->tipo = $tipo;
+                $consultores->id_rubroarea = 12;
                 $consultores->save();
                 $passregistro = $this->encrypt($consultores->id."#"."a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD","a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD");
 
@@ -503,6 +505,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $consultores->mail = $_POST['mail'];
                 $consultores->estado = 1;
                 $consultores->tipo = $tipo;
+                $consultores->id_rubroarea = 13;
                 //print_r ($consultores);
                 //break;
                 //break;
@@ -614,6 +617,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $consultores->mail = $_POST['mail'];
                 $consultores->estado = 1;
                 $consultores->tipo = $tipo;
+                $consultores->id_rubroarea = 14;
                 //print_r ($consultores);
                 //break;
                 //break;
@@ -726,6 +730,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $consultores->mail = $_POST['mail'];
                 $consultores->estado = 1;
                 $consultores->tipo = $tipo;
+                $consultores->id_rubroarea = 15;
                 //print_r ($consultores);
                 //break;
                 //break;
@@ -836,6 +841,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $consultores->mail = $_POST['mail'];
                 $consultores->estado = 1;
                 $consultores->tipo = $tipo;
+                $consultores->id_rubroarea = 9;
                 //print_r ($consultores);
                 //break;
                 //break;
@@ -947,6 +953,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $consultores->mail = $_POST['mail'];
                 $consultores->estado = 1;
                 $consultores->tipo = $tipo;
+                $consultores->id_rubroarea = 10;
                 //print_r ($consultores);
                 //break;
                 //break;
@@ -1084,6 +1091,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                     $empresas->mail_opcional = $_POST['mail_opcional'];
                     $empresas->estado = 1;
                     $empresas->tipo = $tipo;
+                    $empresas->id_rubroarea = 17;
                     $empresas->save();
                     //$idn = $empresas->id;
 
@@ -1224,6 +1232,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $empresas->mail_opcional = $_POST['mail_opcional'];
                 $empresas->estado = 1;
                 $empresas->tipo = $tipo;
+                $empresas->id_rubroarea = 17;
                 $empresas->save();
 
                 //$passregistro = $this->encriptar($empresas->id);
@@ -1359,6 +1368,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $empresas->mail_opcional = $_POST['mail_opcional'];
                 $empresas->estado = 1;
                 $empresas->tipo = $tipo;
+                $empresas->id_rubroarea = 17;
                 $empresas->save();
                 //$idn = $empresas->id;
                 
@@ -1494,6 +1504,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $empresas->mail_opcional = $_POST['mail_opcional'];
                 $empresas->estado = 1;
                 $empresas->tipo = $tipo;
+                $empresas->id_rubroarea = 17;
                 $empresas->save();
                 //$idn = $empresas->id;
                 
@@ -1619,6 +1630,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $empresas->mail_opcional = $_POST['mail_opcional'];
                 $empresas->estado = 1;
                 $empresas->tipo = $tipo;
+                $empresas->id_rubroarea = 17;
                 $empresas->save();
                 //$idn = $empresas->id;
                 
@@ -1744,6 +1756,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $empresas->mail_opcional = $_POST['mail_opcional'];
                 $empresas->estado = 1;
                 $empresas->tipo = $tipo;
+                $empresas->id_rubroarea = 17;
                 $empresas->save();
                 //$idn = $empresas->id;
                 
@@ -1868,6 +1881,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $empresas->mail_opcional = $_POST['mail_opcional'];
                 $empresas->estado = 1;
                 $empresas->tipo = $tipo;
+                $empresas->id_rubroarea = 17;
                 $empresas->save();
                 //$idn = $empresas->id;
                 
@@ -1990,6 +2004,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $empresas->mail_opcional = $_POST['mail_opcional'];
                 $empresas->estado = 1;
                 $empresas->tipo = $tipo;
+                $empresas->id_rubroarea = 17;
                 $empresas->save();
                 //$idn = $empresas->id;
                 $passregistro = $this->encrypt($empresas->id."#"."a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD","a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD");
@@ -2112,6 +2127,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $empresas->mail_opcional = $_POST['mail_opcional'];
                 $empresas->estado = 1;
                 $empresas->tipo = $tipo;
+                $empresas->id_rubroarea = 17;
                 $empresas->save();
                 //$idn = $empresas->id;
                 
