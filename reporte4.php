@@ -16,7 +16,7 @@ $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivi
 	$idregistro_entidad =$id;
 	///INICIO DATOS GENERALES
 	//mysql_query ("SET NAMES 'utf8'");
-	$sql = "SELECT tipoclasificacion.tipo as 'Tipo Consultor', 
+	$sql = "SELECT tipoclasificacion.tipo as 'Tipo Consultor',(SELECT GROUP_CONCAT(rubroarea.nombre) from rubroarea where CONCAT(',',consultores.id_rubroarea,',') LIKE CONCAT('%,',rubroarea.id,',%')) as 'RUBRO/AREA', 
 	consultores.id as 'Nro de registro en el sistema'
 	FROM consultores INNER JOIN tipoclasificacion ON consultores.tipo = tipoclasificacion.id where consultores.id = '$idregistro_entidad'";
 	//$dat = mysql_query($sql);

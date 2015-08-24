@@ -259,7 +259,13 @@ textarea:focus {
       <textarea id="direccion" name="direccion" spellcheck="true" rows="1" cols="50" tabindex="4" class="required"></textarea>
       </div>
   </div>
-  
+  <div class="control-group">
+      <label class="desc" id="title1" for="Field1"><?php echo utf8_encode('Rubro:')?></label>
+      <div>       
+      SUPERVISION<input type="radio" name="rubro" id = "rubro" value="49"/>
+      CONSTRUCCION<input type="radio" name="rubro" id = "rubro" value="17" checked/>
+      </div>
+  </div>
     
    <div class="control-group">
     <label class="desc" id="title1" for="Field1"><?php echo utf8_encode('Número de NIT :')?></label>  

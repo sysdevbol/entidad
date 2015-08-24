@@ -16,7 +16,7 @@ $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivi
 	$idregistro_entidad =$id;
 	///INICIO DATOS GENERALES
 	mysql_query ("SET NAMES 'utf8'");
-	$sql = "SELECT  `Tipo de Empresa Ejecutora` as 'Tipo', `id` as 'Nro de Registro en el sistema', `Nombre del Proponente o Razon Social`,
+	$sql = "SELECT  `Tipo de Empresa Ejecutora` as 'Tipo',`RUBRO/AREA`,`id` as 'Nro de Registro en el sistema', `Nombre del Proponente o Razon Social`,
 	`Nombre del Representante Legal`, `Carnet de Identidad`, `CI Expedido en` from reporteemejdg where id = '$idregistro_entidad'";
 	//$dat = mysql_query($sql);
 	//$reg = @mysql_fetch_assoc($dat, MYSQL_ASSOC);

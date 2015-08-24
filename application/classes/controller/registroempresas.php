@@ -1504,7 +1504,11 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $empresas->mail_opcional = $_POST['mail_opcional'];
                 $empresas->estado = 1;
                 $empresas->tipo = $tipo;
-                $empresas->id_rubroarea = 17;
+                if(empty($_POST['rubro'])){
+                    $empresas->id_rubroarea = 17;
+                }else{
+                    $empresas->id_rubroarea = $_POST['rubro'];
+                }
                 $empresas->save();
                 //$idn = $empresas->id;
                 
