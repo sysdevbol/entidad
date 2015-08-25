@@ -154,6 +154,22 @@ public function action_addUser()
         echo json_encode(1);
         
  }
+ public function action_guardarconfirmacionproveedor() {
+        $ide = $_POST['ide'];
+        $session = Session::instance();
+        $user = $session->get('auth_user');
+        $empresas = ORM::factory('empresas',$ide);
+        $empresas->estado = $_POST['estado'];
+        $empresas->save();
+        $verifica = ORM::factory('verificaobservaciones',$ide);
+        $verifica->id_empresa = $ide;
+        $verifica->id_user = $user->id;
+        $verifica->observacion = $_POST['obs'];
+        $verifica->fecha_registro = date('Y-m-d H:m:i');
+        $verifica->save();
+        echo json_encode(1);
+        
+ }
   
   public function action_guardarconfirmacionconsultor() {
         $ide = $_POST['ide'];

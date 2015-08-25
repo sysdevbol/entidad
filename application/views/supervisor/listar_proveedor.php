@@ -146,7 +146,7 @@ var theme2 = 'office';
         var justifi = $("#observacion").val();
         var estado = $("#estado").val();
         $.ajax({
-            url: "/ajax/guardarconfirmacion",
+            url: "/ajax/guardarconfirmacionproveedor",
             data: {ide:dataRecord.id,estado: estado,obs:justifi},
             type: "POST",
             dataType: 'json',

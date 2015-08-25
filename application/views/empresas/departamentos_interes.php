@@ -63,7 +63,7 @@ foreach ($resultado as $key => $value) {
             <center>
             <table border="0" width="50%">
                 <tr><td><input type="checkbox" id="deptointeres" name="reg[2]" <?php echo $idd2; ?>/>  La Paz</td>
-                    <td><input type="checkbox" id="deptointeres" name="reg[1]" <?php echo $idd1; ?>/>  Sucre</td>
+                    <td><input type="checkbox" id="deptointeres" name="reg[1]" <?php echo $idd1; ?>/>  Chuquisaca</td>
                     <td><input type="checkbox" id="deptointeres" name="reg[3]" <?php echo $idd3; ?>/>  Cochabamba</td>
                 </tr>
                 <tr><td><input type="checkbox" id="deptointeres" name="reg[4]" <?php echo $idd4; ?>/>  Oruro</td>
