@@ -17,7 +17,7 @@
             $this->template->meta_copywrite   = '';
             $this->template->header           = '';
             $this->template->content          = '';
-            $this->template->footer           = 'copyright Ivan Marcelo Chacolla';
+            $this->template->footer           = 'copyright AEvivienda';
             $this->template->styles           = array();
             $this->template->scripts          = array();
             $this->template->document          ='';

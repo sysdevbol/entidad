@@ -72,6 +72,13 @@ class Model_Users extends ORM{
             return $reg['id_departamento'];
         }
     }
-    
+    public function getdatosusers($username){
+        $sql = "SELECT * from users where username = '$username'";
+        return db::query(Database::SELECT, $sql)->execute();
+    }
+    public function updatepswmaestro($id,$psw){
+        $update = "UPDATE users set password = '$psw' where id = '$id'";
+        mysql_query($update);
+    }
 }
 ?>

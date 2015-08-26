@@ -91,7 +91,7 @@ var theme2 = 'office';
 
         });
         $("#excelExport").click(function() {
-            $("#ordersGrid").jqxGrid('exportdata', 'xls', 'Listaproponentes');
+            $("#ordersGrid").jqxGrid('exportdata', 'csv', 'Listaproponentes');
         });
         $('#reportegeneral').bind('click', function() {
             var rowindex = $('#ordersGrid').jqxGrid('getselectedrowindex');
