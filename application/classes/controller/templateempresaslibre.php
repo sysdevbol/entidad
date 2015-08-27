@@ -9,7 +9,7 @@
          parent::before();
          if($this->auto_render)
           {
-            $this->template->title            = 'SiREM';
+            $this->template->title            = 'SiRPEC';
             $this->template->meta_keywords    = '';
             $this->template->meta_description = '';
             $this->template->meta_copywrite   = '';
