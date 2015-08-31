@@ -34,6 +34,9 @@ class Controller_Supervisar extends Controller_IndexTemplate{
     }      
     
     public function action_listarempresas(){
+        if(!empty($_GET['exportentidad']) and $_GET['exportentidad'] == 'ok'){
+            $this->exportarentidad();
+        }
         $vista = 'supervisor/listar_empresas';
         $this->template->title.='Lista de Empresas';
         $this->template->titulo='Lista de Empresas registradas';
@@ -206,6 +209,9 @@ class Controller_Supervisar extends Controller_IndexTemplate{
                                    
     }
     public function action_listarproveedor(){
+        if(!empty($_GET['exportproveedor']) and $_GET['exportproveedor'] == 'ok'){
+            $this->exportarproveedor();
+        }
         $vista = 'supervisor/listar_proveedor';
         $this->template->title.='Lista de Proveedores';
         $this->template->titulo='Lista de Proveedores';
@@ -262,6 +268,9 @@ class Controller_Supervisar extends Controller_IndexTemplate{
                                    ->bind('idu', $idu);
     }
     public function action_listarconsultor(){
+        if(!empty($_GET['exportconsultor']) and $_GET['exportconsultor'] == 'ok'){
+            $this->exportarconsultor();
+        }
         $vista = 'supervisor/listar_consultor';
         $this->template->title.='Lista de Consultores';
         $this->template->titulo='Lista de Consultores registrados';
@@ -316,6 +325,210 @@ class Controller_Supervisar extends Controller_IndexTemplate{
                                    ->bind('user', $user)
                                    ->bind('estados', $estados)
                                    ->bind('idu', $idu);
+    }
+    
+    public function exportarconsultor(){
+         $sql = "SELECT consultores.nombre_completo, 
+    tipoclasificacion.tipo, 
+    departamentos.departamento, 
+    consultores.profesion, 
+    consultores.telefonos, 
+    consultores.celular, 
+    consultores.mail, 
+    estados.estado
+FROM consultores INNER JOIN departamentos ON consultores.id_departamento = departamentos.id
+     INNER JOIN estados ON consultores.estado = estados.id
+     INNER JOIN tipoclasificacion ON consultores.tipo = tipoclasificacion.id";
+         $resultado = mysql_query ($sql) or die (mysql_error ());
+         $registros = mysql_num_rows ($resultado);
+          
+         if ($registros > 0) {
+           require 'application/vendor/PHPExcel/Classes/PHPExcel.php';
+           $objPHPExcel = new PHPExcel();
+            
+           //Informacion del excel
+           $objPHPExcel->
+            getProperties()
+                ->setCreator("aevivienda.gob.bo")
+                ->setLastModifiedBy("aevivienda.gob.bo")
+                ->setTitle("Consultores")
+                ->setSubject("Consultores")
+                ->setDescription("Consultores")
+                ->setKeywords("aevivienda.gob.bo  Consultores")
+                ->setCategory("Consultores");    
+         
+            $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue('A1', "Nombre Completo")
+                    ->setCellValue('B1', "Tipo")
+                    ->setCellValue('C1', "Departamento")
+                    ->setCellValue('D1', "Profesion")
+                    ->setCellValue('F1', "Telefonos")
+                    ->setCellValue('G1', "Celular")
+                    ->setCellValue('H1', "Mail")
+                    ->setCellValue('I1', "Estado");
+           $i = 2;  
+           while ($registro = mysql_fetch_object ($resultado)) {
+                
+              $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue('A'.$i, $registro->nombre_completo)
+                    ->setCellValue('B'.$i, $registro->tipo)
+                    ->setCellValue('C'.$i, $registro->departamento)
+                    ->setCellValue('D'.$i, $registro->profesion)
+                    ->setCellValue('F'.$i, $registro->telefonos)
+                    ->setCellValue('G'.$i, $registro->celular)
+                    ->setCellValue('H'.$i, $registro->mail)
+                    ->setCellValue('I'.$i, $registro->estado);
+          
+              $i++;
+               
+           }
+        }
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="consultores.xls"');
+        header('Cache-Control: max-age=0');
+         
+        $objWriter=PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel5');
+        $objWriter->save('php://output');
+        exit;
+        mysql_close ();
+    }
+    public function exportarproveedor(){
+         $sql = "SELECT empresas.nombre_proponente, 
+    tipoclasificacion.tipo, 
+    departamentos.departamento, 
+    empresas.nit, 
+    empresas.matricula, 
+    empresas.telefonos, 
+    empresas.celular, 
+    empresas.mail, 
+    estados.estado
+FROM empresas INNER JOIN departamentos ON empresas.ciudad = departamentos.id
+     INNER JOIN tipoclasificacion ON empresas.tipo = tipoclasificacion.id
+     INNER JOIN estados ON empresas.estado = estados.id
+where empresas.tipo = 9 OR empresas.tipo = 19";
+         $resultado = mysql_query ($sql) or die (mysql_error ());
+         $registros = mysql_num_rows ($resultado);
+          
+         if ($registros > 0) {
+           require 'application/vendor/PHPExcel/Classes/PHPExcel.php';
+           $objPHPExcel = new PHPExcel();
+            
+           //Informacion del excel
+           $objPHPExcel->
+            getProperties()
+                ->setCreator("aevivienda.gob.bo")
+                ->setLastModifiedBy("aevivienda.gob.bo")
+                ->setTitle("Proveedores")
+                ->setSubject("Proveedores")
+                ->setDescription("Proveedores")
+                ->setKeywords("aevivienda.gob.bo  Proveedores")
+                ->setCategory("Proveedores");    
+         
+            $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue('A1', "Razon Social")
+                    ->setCellValue('B1', "Tipo")
+                    ->setCellValue('C1', "Departamento")
+                    ->setCellValue('D1', "NIT")
+                    ->setCellValue('E1', "Matricula")
+                    ->setCellValue('F1', "Telefonos")
+                    ->setCellValue('G1', "Celular")
+                    ->setCellValue('H1', "Mail")
+                    ->setCellValue('I1', "Estado");
+           $i = 2;  
+           while ($registro = mysql_fetch_object ($resultado)) {
+                
+              $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue('A'.$i, $registro->nombre_proponente)
+                    ->setCellValue('B'.$i, $registro->tipo)
+                    ->setCellValue('C'.$i, $registro->departamento)
+                    ->setCellValue('D'.$i, $registro->nit)
+                    ->setCellValue('E'.$i, $registro->matricula)
+                    ->setCellValue('F'.$i, $registro->telefonos)
+                    ->setCellValue('G'.$i, $registro->celular)
+                    ->setCellValue('H'.$i, $registro->mail)
+                    ->setCellValue('I'.$i, $registro->estado);
+          
+              $i++;
+               
+           }
+        }
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="proveedores.xls"');
+        header('Cache-Control: max-age=0');
+         
+        $objWriter=PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel5');
+        $objWriter->save('php://output');
+        exit;
+        mysql_close ();
+    }
+    public function exportarentidad(){
+         $sql = "SELECT empresas.nombre_proponente, 
+    tipoclasificacion.tipo, 
+    departamentos.departamento, 
+    empresas.nit, 
+    empresas.matricula, 
+    empresas.telefonos, 
+    empresas.celular, 
+    empresas.mail, 
+    estados.estado
+FROM empresas INNER JOIN departamentos ON empresas.ciudad = departamentos.id
+     INNER JOIN tipoclasificacion ON empresas.tipo = tipoclasificacion.id
+     INNER JOIN estados ON empresas.estado = estados.id
+where empresas.tipo <> 9 and empresas.tipo <> 19";
+         $resultado = mysql_query ($sql) or die (mysql_error ());
+         $registros = mysql_num_rows ($resultado);
+          
+         if ($registros > 0) {
+           require 'application/vendor/PHPExcel/Classes/PHPExcel.php';
+           $objPHPExcel = new PHPExcel();
+            
+           //Informacion del excel
+           $objPHPExcel->
+            getProperties()
+                ->setCreator("aevivienda.gob.bo")
+                ->setLastModifiedBy("aevivienda.gob.bo")
+                ->setTitle("Entidades Ejecutoras")
+                ->setSubject("Entidades Ejecutoras")
+                ->setDescription("Entidades Ejecutoras")
+                ->setKeywords("aevivienda.gob.bo  Entidades Ejecutoras")
+                ->setCategory("Entidades");    
+         
+            $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue('A1', "Razon Social")
+                    ->setCellValue('B1', "Tipo")
+                    ->setCellValue('C1', "Departamento")
+                    ->setCellValue('D1', "NIT")
+                    ->setCellValue('E1', "Matricula")
+                    ->setCellValue('F1', "Telefonos")
+                    ->setCellValue('G1', "Celular")
+                    ->setCellValue('H1', "Mail")
+                    ->setCellValue('I1', "Estado");
+           $i = 2;  
+           while ($registro = mysql_fetch_object ($resultado)) {
+                
+              $objPHPExcel->setActiveSheetIndex(0)
+                    ->setCellValue('A'.$i, $registro->nombre_proponente)
+                    ->setCellValue('B'.$i, $registro->tipo)
+                    ->setCellValue('C'.$i, $registro->departamento)
+                    ->setCellValue('D'.$i, $registro->nit)
+                    ->setCellValue('E'.$i, $registro->matricula)
+                    ->setCellValue('F'.$i, $registro->telefonos)
+                    ->setCellValue('G'.$i, $registro->celular)
+                    ->setCellValue('H'.$i, $registro->mail)
+                    ->setCellValue('I'.$i, $registro->estado);
+          
+              $i++;
+               
+           }
+        }
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="entidades.xls"');
+        header('Cache-Control: max-age=0');
+         
+        $objWriter=PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel5');
+        $objWriter->save('php://output');
+        exit;
+        mysql_close ();
     }
     
   

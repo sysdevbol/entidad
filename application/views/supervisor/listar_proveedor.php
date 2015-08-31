@@ -196,7 +196,7 @@ var theme2 = 'office';
                             <li style="text-align: left;"><a id="conformidad" class="" href="javascript:void(0)" style="width: 100px; font-size: 10px;padding: 7px 1px 7px 3px;">Conformidad de Datos</a></li>
                         </ul>
                     </li>
-                    <li style="text-align: left;"><a id="excelExport" class="" href="javascript:void(0)" style="width: 100px; font-size: 15px;padding: 7px 1px 7px 3px;">EXCEL</a></li>
+                    <li style="text-align: left;"><a id="excelExport" class="" href="?exportproveedor=ok" style="width: 100px; font-size: 15px;padding: 7px 1px 7px 3px;">EXCEL</a></li>
                 </ul>
     </div>
 </div>
