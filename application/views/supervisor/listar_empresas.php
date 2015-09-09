@@ -39,7 +39,9 @@ var theme2 = 'office';
                                     {name: 'telefonos',type:'string'},
                                     {name: 'celular',type:'string'},
                                     {name: 'mail',type:'string'},
-                                    {name: 'estado'},
+                                    {name: 'estado',type:'string'},
+                                    {name: 'deptosinteres',type:'string'},
+                                    {name: 'verificadoen',type:'string'},
                                     {name: 'suma'}
                                 ],
                                 id: 'id',
@@ -78,7 +80,9 @@ var theme2 = 'office';
                         {text: 'TELEFONOS', datafield: 'telefonos',editable: false, width: 150, cellsalign: 'left', filtertype: 'textbox',filtercondition: 'contains',cellclassname: cellclass2},
                         {text: 'CELULAR', datafield: 'celular',editable: false, width: 150, cellsalign: 'left', filtertype: 'textbox',filtercondition: 'contains',cellclassname: cellclass2},
                         {text: 'MAIL', datafield: 'mail',editable: false, width: 200, cellsalign: 'left', filtertype: 'textbox',filtercondition: 'contains',cellclassname: cellclass2},
-                        {text: 'ESTADO EMPRESA', datafield: 'estado',editable: false, width: 150, cellsalign: 'left', filtertype: 'textbox',filtercondition: 'contains',cellclassname: cellclass2}
+                        {text: 'INTERES DE TRABAJO', datafield: 'deptosinteres',editable: false, width: 200, cellsalign: 'left', filtertype: 'textbox',filtercondition: 'contains',cellclassname: cellclass2},                        
+                        {text: 'ESTADO EMPRESA', datafield: 'estado',editable: false, width: 150, cellsalign: 'left', filtertype: 'textbox',filtercondition: 'contains',cellclassname: cellclass2},
+                        {text: 'SE VERIFICO EN ...', datafield: 'verificadoen',editable: false, width: 150, cellsalign: 'left', filtertype: 'textbox',filtercondition: 'contains',cellclassname: cellclass2}                        
                     ]
         });
         $("#ordersGrid").bind("bindingcomplete", function(event) {

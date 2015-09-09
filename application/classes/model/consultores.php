@@ -27,7 +27,9 @@ class Model_Consultores extends ORM{
     
     public function listaprconsultores(){
           $sql="SELECT consultores.id,consultores.nombre_completo,tipoclasificacion.tipo,consultores.procedencia,departamentos.departamento,consultores.profesion,consultores.ci,
-          consultores.telefonos,consultores.celular,consultores.mail,estados.estado FROM consultores 
+          consultores.telefonos,consultores.celular,consultores.mail,estados.estado, 
+          (SELECT dpts.departamento from verificaobservaciones left JOIN users on verificaobservaciones.id_user = users.id left JOIN departamentos dpts on users.id_departamento = dpts.id where verificaobservaciones.id_empresa = consultores.id  order by verificaobservaciones.id DESC LIMIT 0,1) as 'verificadoen' 
+          FROM consultores 
           INNER JOIN estados on consultores.estado = estados.id
           LEFT JOIN departamentos on consultores.id_departamento = departamentos.id
           INNER JOIN tipoclasificacion on consultores.tipo = tipoclasificacion.id";
@@ -47,6 +49,7 @@ class Model_Consultores extends ORM{
                             'celular' => $r['celular'],
                             'mail' => $r['mail'],
                             'estado' => $r['estado'],
+                            'verificadoen' => $r['verificadoen'],
                             'suma'=>$i,                
                         );
                         $i++;

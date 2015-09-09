@@ -19,7 +19,9 @@ class Model_Empresas extends ORM{
     }
     
     public function listaprempresas(){
-          $sql="SELECT e.id,e.nombre_proponente,tp.tipo,p.pais,c.ciudad,e.nit,e.matricula,e.telefonos,e.celular,e.mail,es.estado
+          $sql="SELECT e.id,e.nombre_proponente,tp.tipo,p.pais,c.ciudad,e.nit,e.matricula,e.telefonos,e.celular,e.mail,es.estado,
+          (SELECT GROUP_CONCAT(departamentos.departamento) from departamentosinteres inner join departamentos on departamentosinteres.id_departamentos = departamentos.id where departamentosinteres.id_empresas = e.id) as 'deptosinteres',
+          (SELECT dpts.departamento from verificaobservaciones left JOIN users on verificaobservaciones.id_user = users.id left JOIN departamentos dpts on users.id_departamento = dpts.id where verificaobservaciones.id_empresa = e.id  order by verificaobservaciones.id DESC LIMIT 0,1) as 'verificadoen' 
                 FROM empresas e
                 INNER JOIN paises p ON e.pais = p.id
                 INNER JOIN ciudades c ON e.ciudad = c.id
@@ -41,6 +43,8 @@ class Model_Empresas extends ORM{
                             'celular' => $r['celular'],
                             'mail' => $r['mail'],
                             'estado' => $r['estado'],
+                            'deptosinteres' => $r['deptosinteres'],
+                            'verificadoen' => $r['verificadoen'],
                             'suma'=>$i,                
                         );
                         $i++;
@@ -48,7 +52,9 @@ class Model_Empresas extends ORM{
            return array_values($empresas); 
     }
     public function listaprempresasproveedor(){
-          $sql="SELECT e.id,e.nombre_proponente,p.pais,c.ciudad,e.nit,e.matricula,e.telefonos,e.celular,e.mail,es.estado
+          $sql="SELECT e.id,e.nombre_proponente,p.pais,c.ciudad,e.nit,e.matricula,e.telefonos,e.celular,e.mail,es.estado,
+          (SELECT GROUP_CONCAT(departamentos.departamento) from departamentosinteres inner join departamentos on departamentosinteres.id_departamentos = departamentos.id where departamentosinteres.id_empresas = e.id) as 'deptosinteres',
+          (SELECT dpts.departamento from verificaobservaciones left JOIN users on verificaobservaciones.id_user = users.id left JOIN departamentos dpts on users.id_departamento = dpts.id where verificaobservaciones.id_empresa = e.id  order by verificaobservaciones.id DESC LIMIT 0,1) as 'verificadoen' 
                 FROM empresas e
                 INNER JOIN paises p ON e.pais = p.id
                 INNER JOIN ciudades c ON e.ciudad = c.id
@@ -69,6 +75,8 @@ class Model_Empresas extends ORM{
                             'celular' => $r['celular'],
                             'mail' => $r['mail'],
                             'estado' => $r['estado'],
+                            'deptosinteres' => $r['deptosinteres'],
+                            'verificadoen' => $r['verificadoen'],
                             'suma'=>$i,                
                         );
                         $i++;
