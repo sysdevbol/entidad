@@ -148,6 +148,7 @@ public function action_addUser()
         $verifica->id_user = $user->id;
         $verifica->observacion = $_POST['obs'];
         $verifica->fecha_registro = date('Y-m-d H:m:i');
+        $verifica->id_clasificacion = 1;
         $verifica->save();
         $ranking = new Controller_Rankingempresas();
         $ranking->calificacionautomatica($ide,$user,$_POST['estado']);
@@ -166,6 +167,7 @@ public function action_addUser()
         $verifica->id_user = $user->id;
         $verifica->observacion = $_POST['obs'];
         $verifica->fecha_registro = date('Y-m-d H:m:i');
+        $verifica->id_clasificacion = 2;
         $verifica->save();
         echo json_encode(1);
         
@@ -185,6 +187,7 @@ public function action_addUser()
         $verifica->id_user = $user->id;
         $verifica->observacion = $_POST['obs'];
         $verifica->fecha_registro = date('Y-m-d H:m:i');
+        $verifica->id_clasificacion = 3;
         $verifica->save();
         $ranking = new Controller_Rankingconsultor();
         $ranking->calificacionautomatica1($ide,$user,$_POST['estado']);
