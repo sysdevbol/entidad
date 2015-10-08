@@ -24,8 +24,9 @@ var theme2 = 'office';
             <br>
 <div class="control-group">
     <label><?php echo utf8_encode('Para poder generar su registro usted deberia tener toda su informacion completa.')?></label>
+    <label><?php echo utf8_encode('Al generar este certificado de habilitacion usted ya esta HABILITADO en nuestra base de datos.')?></label>
     <!--<label><?php echo utf8_encode('Imprima dos copias de su certificado y aproximese a la departamental correspondiente con documentos originales y fotocopias simples para verificar su informacion.')?></label>-->
-    <label><?php echo utf8_encode('Imprima dos copias de su registro y aproximese a la departamental correspondiente.')?></label>
+    <!--<label><?php echo utf8_encode('Imprima dos copias de su registro y aproximese a la departamental correspondiente.')?></label>-->
     <!--<label><?php echo utf8_encode('Nota: La informacion que usted registro mediante el sistema nos permitira asignarle una calificacion.')?></label>-->
     <label><strong><?php echo utf8_encode('** El Certificado de Habilitacion no tiene valor alguno hasta que sea sellado y firmado por el Area Legal. **')?></strong></label>
 </div>    
@@ -37,6 +38,7 @@ var theme2 = 'office';
 </div>
 </div>  
 <BR>
+    <a href="/reporte4.php/?ide=<?php echo $ide ?>" >IMPRIMA REPORTE DE TODOS SUS DATOS</a>
 <?php
 if($datosC['estado'] == 4){
 ?>

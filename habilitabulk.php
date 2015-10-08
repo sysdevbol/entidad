@@ -1,8 +1,8 @@
 <?php
 $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
-//$sql = "SELECT * FROM empresas where estado = 1 and mail <> '' and mail not like '%eliminado%'";
+$sql = "SELECT * FROM empresas where estado = 1 and mail <> '' and mail not like '%eliminado%'";
 //$sql = "SELECT * FROM `consultores` where estado = 1 and mail <> '' and mail not like '%eliminado%'";
-$sql = "SELECT * FROM empresas where id = '923'";
+//$sql = "SELECT * FROM empresas where id = '923'";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 while($reg = $stmt->fetch(PDO::FETCH_ASSOC)){

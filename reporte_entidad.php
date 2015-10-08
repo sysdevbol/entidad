@@ -223,7 +223,7 @@ if (isset($_GET['ide']))
     //$id = 44282;    
     //conexion a la base de datos    
     //$dbh = new PDO('mysql:host=localhost;port=3306;dbname=cuadro', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
-    $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '', array(PDO::ATTR_PERSISTENT => false));
+    $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
 
     $sql = "SELECT *, DATE_FORMAT(fecha_insert,'%d/%m/%Y %H:%i:%s') as fecharegistro
             FROM empresas
