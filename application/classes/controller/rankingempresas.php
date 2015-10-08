@@ -6,12 +6,18 @@ class Controller_Rankingempresas{
     public function calificacionautomatica($idempresa,$users,$estado){
       if($estado == "4"){
         $proyecto = 1;
-        $ouser = new Model_Users();
-        $deptocalifica = $ouser->iddeptouser($users->id);
+        if($users == "564"){
+            $userid = 564;
+            $deptocalifica = 2;
+        }else{
+            $ouser = new Model_Users();
+            $deptocalifica = $ouser->iddeptouser($users->id);
+            $userid = $users->id;
+        }
         $notafinal1 = $this->califica($idempresa,$proyecto,$deptocalifica);
         $calificaciones = ORM::factory('calificaciones');
         $calificaciones->id_empresa = $idempresa;
-        $calificaciones->id_user = $users->id;
+        $calificaciones->id_user = $userid;
         $calificaciones->calificacion = $notafinal1;
         $calificaciones->comentario = "Nota para proyectos en Vivienda Nueva (GENERADO POR EL SISTEMA)";
         $calificaciones->fecha_registro = date('Y-m-d H:i:s');
@@ -21,7 +27,7 @@ class Controller_Rankingempresas{
         $notafinal2 = $this->califica($idempresa,$proyecto,$deptocalifica);
         $calificaciones = ORM::factory('calificaciones');
         $calificaciones->id_empresa = $idempresa;
-        $calificaciones->id_user = $users->id;
+        $calificaciones->id_user = $userid;
         $calificaciones->calificacion = $notafinal2;
         $calificaciones->comentario = "Nota para proyectos PMAR (GENERADO POR EL SISTEMA)";
         $calificaciones->fecha_registro = date('Y-m-d H:i:s');

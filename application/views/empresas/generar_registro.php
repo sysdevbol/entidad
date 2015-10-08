@@ -28,8 +28,9 @@ $estadoempresa = $estado;
             <br>
 <div class="control-group">
     <label><?php echo utf8_encode('Para poder generar su registro usted deberia tener toda su informacion completa. (Datos Generales, Experiencia Laboral, Departamentos de Interes).')?></label>
-    <label><?php echo utf8_encode('Imprima dos copias de su registro y aproximese a la departamental correspondiente con documentos originales y fotocopias simples para verificar su informacion.')?></label>
-    <label><?php echo utf8_encode('Nota: La informacion que usted registro mediante el sistema nos permitira asignarle una calificacion.')?></label>
+    <!--<label><?php echo utf8_encode('Imprima dos copias de su registro y aproximese a la departamental correspondiente con documentos originales y fotocopias simples para verificar su informacion.')?></label>-->
+    <label><?php echo utf8_encode('Imprima dos copias de su registro y aproximese a la departamental correspondiente.')?></label>
+    <!--<label><?php echo utf8_encode('Nota: La informacion que usted registro mediante el sistema nos permitira asignarle una calificacion.')?></label>-->
     <label><strong><?php echo utf8_encode('** El Certificado de Habilitacion no tiene valor alguno hasta que sea sellado y firmado por el Area Legal. **')?></strong></label>
 </div>    
 <div class="control-group">
@@ -43,7 +44,7 @@ $estadoempresa = $estado;
 <?php
 if($estadoempresa == 4){
 ?>
-<label style="color:red"><strong><?php echo utf8_encode('Usted ya fue Habilitado, si genera nuevamente el "Certificado de Habilitacion" el estado de su empresa cambiara a "Pendiente para Revision" y necesitara dirigirse nuevamente a la departamental para ser Habilitado.')?></strong></label>          
+<!-- <label style="color:red"><strong><?php echo utf8_encode('Usted ya fue Habilitado, si genera nuevamente el "Certificado de Habilitacion" el estado de su empresa cambiara a "Pendiente para Revision" y necesitara dirigirse nuevamente a la departamental para ser Habilitado.')?></strong></label>  -->        
 <?php    
 }
 ?>          

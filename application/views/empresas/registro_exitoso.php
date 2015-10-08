@@ -4,10 +4,10 @@
 			</header>
 			<small class="text-justified">
 				<p><?php echo $mensaje;?></p>
-				<!--p></p><?php echo $resultado1;?>
-                <?php echo $resultado2;?>
-                <p>Usuario:<?php echo $usuario;?></p>
-                <p>Contrase&ntilde;a:<?php echo $contraseña;?></p-->				
+				<p></p><?php //echo $resultado1;?>
+                <?php //echo $resultado2;?>
+                <p><h3><strong>Usuario:<?php echo $usuario;?></strong></h3></p>
+                <p><h3><strong>Contrase&ntilde;a:<?php echo $contraseña;?></strong></h3></p>				
 			</small>
 
             <div class="row">

@@ -304,7 +304,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                 $estadoconsultor = $_POST['estado'];
                 $idcons = $_POST['idcons'];
                 if($estadoconsultor == 4){
-                  echo '<script>alert("Usted esta generando el certificado nuevamente, necesita dirigirse a la departamental para ser Habilitado.")</script>';  
+                  //echo '<script>alert("Usted esta generando el certificado nuevamente, necesita dirigirse a la departamental para ser Habilitado.")</script>';  
                 }
                 $consul = ORM::factory('consultores',$idcons);
                 $consul->estado = "3";
@@ -312,7 +312,8 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                 //$oEmpresas1 = new Model_Empresas();
                 //$re=$oEmpresas1->generapin($idempresa);
                 //echo '<script>alert("GENERA!!!!!")</script>';    
-                //echo '<script>location.href = "/reporte2.php/?ide="+'.$idempresa.';</script>';    
+                //echo '<script>location.href = "/reporte2.php/?ide="+'.$idempresa.';</script>';
+                $this-> guardarconfirmacionconsultorextra($idcons);   
                 $this->request->redirect('reporte_consultor.php?ide='.$idcons); 
 
             }
@@ -518,6 +519,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                             //$oEmpresas1 = new Model_Empresas();
                             //$re=$oEmpresas1->generapin($idempresa);
                             //echo '<script>alert("GENERA!!!!!")</script>';    
+                            $this->guardarconfirmacionextra($idempresa);
                             echo '<script>location.href = "/reporte_entidad.php/?ide="+'.$idempresa.';</script>';    
                         }
                     }
@@ -572,7 +574,8 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                         $empresapin->save();
                         //$oEmpresas1 = new Model_Empresas();
                         //$re=$oEmpresas1->generapin($idempresa);
-                        //echo '<script>alert("GENERA!!!!!")</script>';    
+                        //echo '<script>alert("GENERA!!!!!")</script>';
+                        $this->guardarconfirmacionextra($idempresa);    
                         echo '<script>location.href = "/reporte_entidad.php/?ide="+'.$idempresa.';</script>';
                     }
                 }
@@ -907,7 +910,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                             echo '<script>alert("Deberia tener al menos un Departamento de interes seleccionado.")</script>';    
                         }else{
                             if($estadoempresa == 4){
-                              echo '<script>alert("Usted esta generando el certificado nuevamente, necesita dirigirse a la departamental para ser Habilitado.")</script>';  
+                              //echo '<script>alert("Usted esta generando el certificado nuevamente, necesita dirigirse a la departamental para ser Habilitado.")</script>';  
                             }
                             //genera registro
                             $pin = 100000+$idempresa;
@@ -918,7 +921,8 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                             //$oEmpresas1 = new Model_Empresas();
                             //$re=$oEmpresas1->generapin($idempresa);
                             //echo '<script>alert("GENERA!!!!!")</script>';    
-                            //echo '<script>location.href = "/reporte2.php/?ide="+'.$idempresa.';</script>';    
+                            //echo '<script>location.href = "/reporte2.php/?ide="+'.$idempresa.';</script>';
+                            $this->guardarconfirmacionproveedorextra($idempresa);    
                             $this->request->redirect('reporte_prov.php?ide='.$idempresa); 
                         }
                     }
@@ -1038,7 +1042,70 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
         }
         return floatval(str_replace($dec_point, '.', preg_replace('/[^\d' . preg_quote($dec_point) . ']/', '', $number)));
     }
+    public function guardarconfirmacionextra($id) {
+        $ide = $id;
+        //$session = Session::instance();
+        //$user = $session->get('auth_user');
+        $user = 564;
+        $empresas = ORM::factory('empresas',$ide);
+        //$empresas->estado = $_POST['estado'];
+        $empresas->estado = 4;
+        $empresas->save();
+        $verifica = ORM::factory('verificaobservaciones',$ide);
+        $verifica->id_empresa = $ide;
+        $verifica->id_user = $user;
+        //$verifica->observacion = $_POST['obs'];
+        $verifica->observacion = "Automatica al generar certificado";
+        $verifica->fecha_registro = date('Y-m-d H:m:i');
+        $verifica->id_clasificacion = 1;
+        $verifica->save();
+        $ranking = new Controller_Rankingempresas();
+        $ranking->calificacionautomatica($ide,$user,"4");
+        
+ }
+ public function guardarconfirmacionproveedorextra($id) {
+        $ide = $id;
+        //$session = Session::instance();
+        //$user = $session->get('auth_user');
+        $user = 564;
+        $empresas = ORM::factory('empresas',$ide);
+        //$empresas->estado = $_POST['estado'];
+        $empresas->estado = 4;
+        $empresas->save();
+        $verifica = ORM::factory('verificaobservaciones',$ide);
+        $verifica->id_empresa = $ide;
+        $verifica->id_user = $user;
+        //$verifica->observacion = $_POST['obs'];
+        $verifica->observacion = "Automatica al generar certificado";
+        $verifica->fecha_registro = date('Y-m-d H:m:i');
+        $verifica->id_clasificacion = 2;
+        $verifica->save();
+        
+ }
+  
+  public function guardarconfirmacionconsultorextra($id) {
+        $ide = $id;
+        $session = Session::instance();
+        //$user = $session->get('auth_user');
+        $user = 564;
+        $empresas = ORM::factory('consultores',$ide);
+        //$empresas->estado = $_POST['estado'];
+        $empresas->estado = 4;
+        //$desembolsos->fecha_registro = date('Y-m-d H:m:i');
+        $empresas->save();
+        
+        $verifica = ORM::factory('verificaobservaciones',$ide);
+        $verifica->id_empresa = $ide;
+        $verifica->id_user = $user;
+        //$verifica->observacion = $_POST['obs'];
+        $verifica->observacion = "Automatica al generar certificado";
+        $verifica->fecha_registro = date('Y-m-d H:m:i');
+        $verifica->id_clasificacion = 3;
+        $verifica->save();
+        $ranking = new Controller_Rankingconsultor();
+        $ranking->calificacionautomatica1($ide,$user,"4");
     
+ }
   
 }
 /**

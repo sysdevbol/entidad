@@ -344,19 +344,19 @@ textarea:focus {
   <div class="control-group">
   <label class="desc" id="title1" for="Field1"><?php echo utf8_encode('Número de Tetimonio:')?></label>
   <div>
-        <?php echo Form::input('testimonio',NULL,array('id'=>'testimonio','class' => 'field text fn required')); ?>
+        <?php echo Form::input('testimonio',NULL,array('id'=>'testimonio')); ?>
   </div>
   </div>
   <div class="control-group">
   <label class="desc" id="title1" for="Field1"><?php echo utf8_encode('Lugar de Emisión:')?></label>
   <div>
-        <textarea id="testimonio_emision" name="testimonio_emision" spellcheck="true" rows="2" cols="50" tabindex="4" class="required"></textarea>
+        <textarea id="testimonio_emision" name="testimonio_emision" spellcheck="true" rows="2" cols="50" tabindex="4"></textarea>
   </div>
   </div>
   <div class="control-group">
   <label class="desc" id="title1" for="Field1"><?php echo utf8_encode('Fecha de Expedición de Testimonio:')?></label>
     <div>
-        <?php echo Form::input('testimonio_fecha_expedido',NULL,array('id'=>'testimonio_fecha_expedido','class' => 'field text fn date required')); ?>
+        <?php echo Form::input('testimonio_fecha_expedido',NULL,array('id'=>'testimonio_fecha_expedido')); ?>
     </div>
   </div>
   <div class="titgrupo">

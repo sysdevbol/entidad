@@ -223,7 +223,7 @@ if (isset($_GET['ide']))
     //$id = 44282;    
     //conexion a la base de datos    
     //$dbh = new PDO('mysql:host=localhost;port=3306;dbname=cuadro', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
-    $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
+    $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '', array(PDO::ATTR_PERSISTENT => false));
 
     $sql = "SELECT *, DATE_FORMAT(fecha_insert,'%d/%m/%Y %H:%i:%s') as fecharegistro
             FROM empresas
@@ -258,6 +258,8 @@ if (isset($_GET['ide']))
         $pdf->Row(array('TELEFONO/CELULAR',$rs->telefonos." / ".$rs->celular));
         $pdf->Row(array(utf8_decode('CORREO ELECTRÓNICO'),$rs->mail));
         $pdf->Row(array('FECHA DE REGISTRO',$rs->fecharegistro));
+        $pdf->SetFont('helvetica', 'B', 8);
+        $pdf->Cell(180, 12, utf8_decode('Toda la información ingresada en el presente registro tiene validez de DECLARACION JURADA y tendrá el tratamiento legal correspondiente.'), 0, FALSE, 'C');
         $pdf->Ln(20);
         $pdf->Cell(60);
         $pdf->Cell(60, 40,'', 1, FALSE, 'C');

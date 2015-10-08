@@ -129,9 +129,10 @@ class Controller_Proveedores extends Controller_TemplateEmpresasLibre{
                     //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                     //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                     $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                    mail($destinatario,$asunto,$cuerpo,$headers);
+                    //mail($destinatario,$asunto,$cuerpo,$headers);
 
-                    $this->request->redirect('proveedores/confirmaciones/'.$passregistro);
+                    //$this->request->redirect('proveedores/confirmaciones/'.$passregistro);
+                    $this->request->redirect('proveedores/registroexitoso/'.$passregistro);
             }else{
                 echo '<script>alert("La direccion de correo ya fue registrada.");</script>';
             }    
@@ -266,9 +267,10 @@ class Controller_Proveedores extends Controller_TemplateEmpresasLibre{
                     //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                     //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                     $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                    mail($destinatario,$asunto,$cuerpo,$headers);
+                    //mail($destinatario,$asunto,$cuerpo,$headers);
 
-                    $this->request->redirect('proveedores/confirmaciones/'.$passregistro);
+                    //$this->request->redirect('proveedores/confirmaciones/'.$passregistro);
+                    $this->request->redirect('proveedores/registroexitoso/'.$passregistro);
             }else{
                 echo '<script>alert("La direccion de correo ya fue registrada.");</script>';
             }    

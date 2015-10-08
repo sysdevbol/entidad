@@ -242,7 +242,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                     //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                     //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                     $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                    mail($destinatario,$asunto,$cuerpo,$headers);
+                    //mail($destinatario,$asunto,$cuerpo,$headers);
                     $this->request->redirect('registroempresas/registrarsuper_dos/'.$consultores->id);
                     //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
             
@@ -376,7 +376,8 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
             
         }
         if (isset($_POST['guardar']) and $_POST['guardar'] == "Finalizar") {
-            $this->request->redirect('registroempresas/confirmaciones/'.$idconsultor);
+            //$this->request->redirect('registroempresas/confirmaciones/'.$idconsultor);
+            $this->request->redirect('registroempresas/registroexitoso2/'.$idconsultor);
         }
 
         $this->template->title.='::Registro Consultor/experiencia';
@@ -462,7 +463,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                     //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                     //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                     $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                    mail($destinatario,$asunto,$cuerpo,$headers);
+                    //mail($destinatario,$asunto,$cuerpo,$headers);
                     $this->request->redirect('registroempresas/registrarsuper_dos/'.$consultores->id);
                     //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
             
@@ -573,7 +574,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                     //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                     //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                     $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                    mail($destinatario,$asunto,$cuerpo,$headers);
+                    //mail($destinatario,$asunto,$cuerpo,$headers);
                     $this->request->redirect('registroempresas/registrarsuper_dos/'.$consultores->id);
                     //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
             
@@ -685,7 +686,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                     //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                     //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                     $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                    mail($destinatario,$asunto,$cuerpo,$headers);
+                    //mail($destinatario,$asunto,$cuerpo,$headers);
                     $this->request->redirect('registroempresas/registrarsuper_dos/'.$consultores->id);
                     //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
             
@@ -798,7 +799,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                     //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                     //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                     $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                    mail($destinatario,$asunto,$cuerpo,$headers);
+                    //mail($destinatario,$asunto,$cuerpo,$headers);
                     $this->request->redirect('registroempresas/registrarsuper_dos/'.$consultores->id);
                     //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
             
@@ -909,7 +910,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                     //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                     //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                     $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                    mail($destinatario,$asunto,$cuerpo,$headers);
+                    //mail($destinatario,$asunto,$cuerpo,$headers);
                     $this->request->redirect('registroempresas/registrarsuper_dos/'.$consultores->id);
                     //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
             
@@ -1021,7 +1022,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                     //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                     //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                     $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                    mail($destinatario,$asunto,$cuerpo,$headers);
+                    //mail($destinatario,$asunto,$cuerpo,$headers);
                     $this->request->redirect('registroempresas/registrarsuper_cinco/'.$consultores->id);
                     //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
             
@@ -1168,9 +1169,10 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                     //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                     //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                     $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                    mail($destinatario,$asunto,$cuerpo,$headers);
+                    //mail($destinatario,$asunto,$cuerpo,$headers);
 
-                    $this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                    //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                    $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
                 }
             }    
 
@@ -1309,9 +1311,10 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                 //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                 $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                mail($destinatario,$asunto,$cuerpo,$headers);
+                //mail($destinatario,$asunto,$cuerpo,$headers);
                 
-                $this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
             }}    
                               
         }
@@ -1451,9 +1454,10 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                 //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                 $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                mail($destinatario,$asunto,$cuerpo,$headers);
+                //mail($destinatario,$asunto,$cuerpo,$headers);
                 
-                $this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
             }}    
                               
         }
@@ -1591,9 +1595,10 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                 //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                 $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                mail($destinatario,$asunto,$cuerpo,$headers);
+                //mail($destinatario,$asunto,$cuerpo,$headers);
                 
-                $this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
             }}    
                               
         }
@@ -1623,6 +1628,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
         $this->template->content = View::factory($vista)
              ->bind('paises', $paises)
              ->bind('departamentos', $departamentos)
+             ->bind('tipo', $tipo)
              ->bind('ciudades', $ciudades);
     }
     
@@ -1722,9 +1728,10 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                 //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                 $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                mail($destinatario,$asunto,$cuerpo,$headers);
+                //mail($destinatario,$asunto,$cuerpo,$headers);
                 
-                $this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
             }}    
                               
         }
@@ -1853,9 +1860,10 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                 //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                 $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                mail($destinatario,$asunto,$cuerpo,$headers);
+                //mail($destinatario,$asunto,$cuerpo,$headers);
                 
-                $this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
             }}    
                               
         }
@@ -1983,9 +1991,10 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                 //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                 $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                mail($destinatario,$asunto,$cuerpo,$headers);
+                //mail($destinatario,$asunto,$cuerpo,$headers);
                 
-                $this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
             }}    
                               
         }
@@ -2110,9 +2119,10 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                 //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                 $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                mail($destinatario,$asunto,$cuerpo,$headers);
+                //mail($destinatario,$asunto,$cuerpo,$headers);
                 
-                $this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
             }}    
                               
         }
@@ -2238,7 +2248,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                 //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                 $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                mail($destinatario,$asunto,$cuerpo,$headers);
+                //mail($destinatario,$asunto,$cuerpo,$headers);
                 
                 $this->request->redirect('registroempresas/registraracc_dos/'.$empresas->id);
             }}    
@@ -2299,7 +2309,8 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
             $passregistro = $this->encrypt($idempresa."#"."a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD","a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD");
             
 
-            $this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+            //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
+            $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
         }
 
 
@@ -2341,7 +2352,8 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $mensaje=utf8_encode("Error: Ya existe este correo registrado. Comuníquese con nosotros a los números de la Pagina web <a href='http://www.aevivienda.gob.bo'>www.aevivienda.gob.bo</a> o envíenos un correo a info@aevivienda.gob.bo");        
             }else{
                 
-                $mensaje="En breve se le procedera a enviar los datos necesarios para acceder al Sistema de Registro de Empresas.";
+                //$mensaje="En breve se le procedera a enviar los datos necesarios para acceder al Sistema de Registro de Empresas.";
+                $mensaje="Estos son los datos para ingresar al sistema, complete toda la informacion solicitada e imprima su Certificado de Habilitacion. Tambien le enviaremos un email con estos datos de acceso al sistema.";
                 $contraseña = mt_rand(1999, 9999);
                 $auth=Auth::instance();
                 $password = $auth->hash_password($contraseña);
@@ -2422,6 +2434,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                         ->bind('contraseña', $contraseña);
     }
 
+    
 
     public function action_registroexitoso($idvery){
         
@@ -2441,7 +2454,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $mensaje=utf8_encode("Error: Ya existe una empresa registrada con el correo que registro. Comuníquese con nosotros a los números de la Pagina web <a href='http://www.aevivienda.gob.bo'>www.aevivienda.gob.bo</a> o envíenos un correo a info@aevivienda.gob.bo");        
             }else{
                 
-                $mensaje="En breve se le procedera a enviar los datos necesarios para acceder al Sistema de Registro de Empresas.";
+                $mensaje="Estos son los datos para ingresar al sistema, complete toda la informacion solicitada e imprima su Certificado de Habilitacion. Tambien le enviaremos un email con estos datos de acceso al sistema.";
                 $contraseña = mt_rand(1999, 9999);
                 $auth=Auth::instance();
                 $password = $auth->hash_password($contraseña);
@@ -2468,6 +2481,7 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 $empresas->save();
                 
                 
+
                 $destinatario = $resultVery['mail'];
                 $asunto = "Datos para el ingreso al sistema de la AEVIVIENDA";
                 $cuerpo = '
@@ -2505,7 +2519,8 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //$headers .= "Reply-To: mmejia@aevivienda.gob.bo\r\n";
                 //$headers .= "Return-path: obarreta@aevivienda.gob.bo\r\n";
                 $headers .= "Cc: registro.entidad@aevivienda.gob.bo\r\n";             
-                mail($destinatario,$asunto,$cuerpo,$headers);        
+                mail($destinatario,$asunto,$cuerpo,$headers);
+                       
             }
          
         }else{

@@ -257,6 +257,8 @@ if (isset($_GET['ide']))
         $pdf->Row(array('TELEFONO/CELULAR',$rs->telefonos." / ".$rs->celular));
         $pdf->Row(array(utf8_decode('CORREO ELECTRÓNICO'),$rs->mail));
         $pdf->Row(array('FECHA DE REGISTRO',$rs->fecharegistro));
+        $pdf->SetFont('helvetica', 'B', 8);
+        $pdf->Cell(180, 12, utf8_decode('Toda la información ingresada en el presente registro tiene validez de DECLARACION JURADA y tendrá el tratamiento legal correspondiente.'), 0, FALSE, 'C');
         $pdf->Ln(20);
         $pdf->Cell(60);
         $pdf->Cell(60, 40,'', 1, FALSE, 'C');
