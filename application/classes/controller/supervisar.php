@@ -335,7 +335,8 @@ class Controller_Supervisar extends Controller_IndexTemplate{
     consultores.telefonos, 
     consultores.celular, 
     consultores.mail, 
-    estados.estado
+    estados.estado,
+    (SELECT dpts.departamento from verificaobservaciones left JOIN users on verificaobservaciones.id_user = users.id left JOIN departamentos dpts on users.id_departamento = dpts.id where verificaobservaciones.id_empresa = consultores.id  order by verificaobservaciones.id DESC LIMIT 0,1) as 'verificadoen' 
 FROM consultores INNER JOIN departamentos ON consultores.id_departamento = departamentos.id
      INNER JOIN estados ON consultores.estado = estados.id
      INNER JOIN tipoclasificacion ON consultores.tipo = tipoclasificacion.id";
@@ -365,7 +366,8 @@ FROM consultores INNER JOIN departamentos ON consultores.id_departamento = depar
                     ->setCellValue('F1', "Telefonos")
                     ->setCellValue('G1', "Celular")
                     ->setCellValue('H1', "Mail")
-                    ->setCellValue('I1', "Estado");
+                    ->setCellValue('I1', "Estado")
+                    ->setCellValue('J1', "VerificadoEn");
            $i = 2;  
            while ($registro = mysql_fetch_object ($resultado)) {
                 
@@ -377,7 +379,8 @@ FROM consultores INNER JOIN departamentos ON consultores.id_departamento = depar
                     ->setCellValue('F'.$i, $registro->telefonos)
                     ->setCellValue('G'.$i, $registro->celular)
                     ->setCellValue('H'.$i, $registro->mail)
-                    ->setCellValue('I'.$i, $registro->estado);
+                    ->setCellValue('I'.$i, $registro->estado)
+                    ->setCellValue('J'.$i, $registro->verificadoen);
           
               $i++;
                
@@ -401,7 +404,8 @@ FROM consultores INNER JOIN departamentos ON consultores.id_departamento = depar
     empresas.telefonos, 
     empresas.celular, 
     empresas.mail, 
-    estados.estado
+    estados.estado, 
+    (SELECT dpts.departamento from verificaobservaciones left JOIN users on verificaobservaciones.id_user = users.id left JOIN departamentos dpts on users.id_departamento = dpts.id where verificaobservaciones.id_empresa = empresas.id  order by verificaobservaciones.id DESC LIMIT 0,1) as 'verificadoen' 
 FROM empresas INNER JOIN departamentos ON empresas.ciudad = departamentos.id
      INNER JOIN tipoclasificacion ON empresas.tipo = tipoclasificacion.id
      INNER JOIN estados ON empresas.estado = estados.id
@@ -433,7 +437,8 @@ where empresas.tipo = 9 OR empresas.tipo = 19";
                     ->setCellValue('F1', "Telefonos")
                     ->setCellValue('G1', "Celular")
                     ->setCellValue('H1', "Mail")
-                    ->setCellValue('I1', "Estado");
+                    ->setCellValue('I1', "Estado")
+                    ->setCellValue('J1', "VerificadoEn");
            $i = 2;  
            while ($registro = mysql_fetch_object ($resultado)) {
                 
@@ -446,7 +451,8 @@ where empresas.tipo = 9 OR empresas.tipo = 19";
                     ->setCellValue('F'.$i, $registro->telefonos)
                     ->setCellValue('G'.$i, $registro->celular)
                     ->setCellValue('H'.$i, $registro->mail)
-                    ->setCellValue('I'.$i, $registro->estado);
+                    ->setCellValue('I'.$i, $registro->estado)
+                    ->setCellValue('J'.$i, $registro->verificadoen);
           
               $i++;
                
@@ -470,7 +476,8 @@ where empresas.tipo = 9 OR empresas.tipo = 19";
     empresas.telefonos, 
     empresas.celular, 
     empresas.mail, 
-    estados.estado
+    estados.estado,
+    (SELECT dpts.departamento from verificaobservaciones left JOIN users on verificaobservaciones.id_user = users.id left JOIN departamentos dpts on users.id_departamento = dpts.id where verificaobservaciones.id_empresa = empresas.id  order by verificaobservaciones.id DESC LIMIT 0,1) as 'verificadoen' 
 FROM empresas INNER JOIN departamentos ON empresas.ciudad = departamentos.id
      INNER JOIN tipoclasificacion ON empresas.tipo = tipoclasificacion.id
      INNER JOIN estados ON empresas.estado = estados.id
@@ -502,7 +509,8 @@ where empresas.tipo <> 9 and empresas.tipo <> 19";
                     ->setCellValue('F1', "Telefonos")
                     ->setCellValue('G1', "Celular")
                     ->setCellValue('H1', "Mail")
-                    ->setCellValue('I1', "Estado");
+                    ->setCellValue('I1', "Estado")
+                    ->setCellValue('J1', "VerificadoEn");
            $i = 2;  
            while ($registro = mysql_fetch_object ($resultado)) {
                 
@@ -515,7 +523,8 @@ where empresas.tipo <> 9 and empresas.tipo <> 19";
                     ->setCellValue('F'.$i, $registro->telefonos)
                     ->setCellValue('G'.$i, $registro->celular)
                     ->setCellValue('H'.$i, $registro->mail)
-                    ->setCellValue('I'.$i, $registro->estado);
+                    ->setCellValue('I'.$i, $registro->estado)
+                    ->setCellValue('J'.$i, $registro->verificadoen);
           
               $i++;
                

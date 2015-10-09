@@ -34,7 +34,7 @@
 					</div>
 					<div class="navbar-header">
 						<span id="titleaux" class="navbar-brand nonvisible-handheld visible-xs">
-							<a href="https://www.aevivienda.gob.bo">Agencia Estatal de Vivienda</a>
+							<a href="http://www.aevivienda.gob.bo">Agencia Estatal de Vivienda</a>
 						</span>
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 							<span class="sr-only">Toggle navigation</span> 
@@ -45,7 +45,7 @@
 					</div>
                     
 					<div id="headmenus" class="collapse navbar-collapse navbar-right">
-						<span class="navbar-brand nonvisible-handheld visible-lg visible-md visible-sm"><a href="https://www.aevivienda.gob.bo">Agencia Estatal de Vivienda</a></span>
+						<span class="navbar-brand nonvisible-handheld visible-lg visible-md visible-sm"><a href="http://www.aevivienda.gob.bo">Agencia Estatal de Vivienda</a></span>
 						<ul class="nav navbar-nav">
 							<li class="active">
 										<a href="#">
