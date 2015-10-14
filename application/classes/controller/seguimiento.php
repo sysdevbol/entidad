@@ -508,7 +508,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                             echo '<script>alert("Deberia tener al menos un Departamento de interes seleccionado.")</script>';    
                         }else{
                             if($estadoempresa == 4){
-                              echo '<script>alert("Usted esta generando el certificado nuevamente, necesita dirigirse a la departamental para ser Habilitado.")</script>';  
+                              //echo '<script>alert("Usted esta generando el certificado nuevamente, necesita dirigirse a la departamental para ser Habilitado.")</script>';  
                             }
                             //genera registro
                             $pin = 100000+$idempresa;
@@ -564,7 +564,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                         echo '<script>alert("Deberia tener al menos un socio registrado.")</script>';
                     }else{
                         if($estadoempresa == 4){
-                          echo '<script>alert("Usted esta generando el certificado nuevamente, necesita dirigirse a la departamental para ser Habilitado.")</script>';  
+                          //echo '<script>alert("Usted esta generando el certificado nuevamente, necesita dirigirse a la departamental para ser Habilitado.")</script>';  
                         }
                         //genera registro
                         $pin = 100000+$idempresa;

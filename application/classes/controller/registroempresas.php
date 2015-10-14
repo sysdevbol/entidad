@@ -1172,7 +1172,9 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                     //mail($destinatario,$asunto,$cuerpo,$headers);
 
                     //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
-                    $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                    //$this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                    $this->request->redirect('registroempresas/registroexitoso/'.$empresas->id);
+                    
                 }
             }    
 
@@ -1314,7 +1316,8 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //mail($destinatario,$asunto,$cuerpo,$headers);
                 
                 //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
-                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                //$this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$empresas->id);
             }}    
                               
         }
@@ -1457,7 +1460,8 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //mail($destinatario,$asunto,$cuerpo,$headers);
                 
                 //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
-                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                //$this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$empresas->id);
             }}    
                               
         }
@@ -1598,7 +1602,8 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //mail($destinatario,$asunto,$cuerpo,$headers);
                 
                 //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
-                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                //$this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$empresas->id);
             }}    
                               
         }
@@ -1731,7 +1736,8 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //mail($destinatario,$asunto,$cuerpo,$headers);
                 
                 //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
-                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                //$this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$empresas->id);
             }}    
                               
         }
@@ -1863,7 +1869,8 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //mail($destinatario,$asunto,$cuerpo,$headers);
                 
                 //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
-                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                //$this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$empresas->id);
             }}    
                               
         }
@@ -1994,7 +2001,8 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //mail($destinatario,$asunto,$cuerpo,$headers);
                 
                 //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
-                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                //$this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$empresas->id);
             }}    
                               
         }
@@ -2122,7 +2130,8 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
                 //mail($destinatario,$asunto,$cuerpo,$headers);
                 
                 //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
-                $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                //$this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+                $this->request->redirect('registroempresas/registroexitoso/'.$empresas->id);
             }}    
                               
         }
@@ -2310,7 +2319,8 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
             
 
             //$this->request->redirect('registroempresas/confirmaciones/'.$passregistro);
-            $this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+            //$this->request->redirect('registroempresas/registroexitoso/'.$passregistro);
+            $this->request->redirect('registroempresas/registroexitoso/'.$idempresa);
         }
 
 
@@ -2441,10 +2451,10 @@ class Controller_Registroempresas extends Controller_TemplateEmpresasLibre{
         //$encrypt = Encrypt::instance('tripledes');
         //$decrypt = $encrypt->decode($idvery);
         
-        $decryptO = $this->decrypt($idvery,"a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD");
-        list ( $decrypt,$cuerpo) = explode ( "#",$decryptO);
+        //$decryptO = $this->decrypt($idvery,"a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD");
+        //list ( $decrypt,$cuerpo) = explode ( "#",$decryptO);
         $oEmpresas = new Model_Empresas();
-        $resultVery = $oEmpresas->veryficarcodigo($decrypt);
+        $resultVery = $oEmpresas->veryficarcodigo($idvery);
         $resultVery = $resultVery[0];
         if($resultVery['resultado']==1){
             

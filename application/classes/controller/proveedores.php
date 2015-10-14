@@ -132,7 +132,8 @@ class Controller_Proveedores extends Controller_TemplateEmpresasLibre{
                     //mail($destinatario,$asunto,$cuerpo,$headers);
 
                     //$this->request->redirect('proveedores/confirmaciones/'.$passregistro);
-                    $this->request->redirect('proveedores/registroexitoso/'.$passregistro);
+                    //$this->request->redirect('proveedores/registroexitoso/'.$passregistro);
+                    $this->request->redirect('proveedores/registroexitoso/'.$empresas->id);
             }else{
                 echo '<script>alert("La direccion de correo ya fue registrada.");</script>';
             }    
@@ -270,7 +271,8 @@ class Controller_Proveedores extends Controller_TemplateEmpresasLibre{
                     //mail($destinatario,$asunto,$cuerpo,$headers);
 
                     //$this->request->redirect('proveedores/confirmaciones/'.$passregistro);
-                    $this->request->redirect('proveedores/registroexitoso/'.$passregistro);
+                    //$this->request->redirect('proveedores/registroexitoso/'.$passregistro);
+                    $this->request->redirect('proveedores/registroexitoso/'.$empresas->id);
             }else{
                 echo '<script>alert("La direccion de correo ya fue registrada.");</script>';
             }    
@@ -329,10 +331,10 @@ class Controller_Proveedores extends Controller_TemplateEmpresasLibre{
         //$encrypt = Encrypt::instance('tripledes');
         //$decrypt = $encrypt->decode($idvery);
         $vista = 'proveedores/registro_exitoso';
-        $decryptO = $this->decrypt($idvery,"a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD");
-        list ( $decrypt,$cuerpo) = explode ( "#",$decryptO);
+        //$decryptO = $this->decrypt($idvery,"a9hcSLRvA3LkFc7EJgxXIKQuz1ec91J7P6WNq1IaxMZp4CTj5m31gZLARLxI1jD");
+        //list ( $decrypt,$cuerpo) = explode ( "#",$decryptO);
         $oEmpresas = new Model_Empresas();
-        $resultVery = $oEmpresas->veryficarcodigo($decrypt);
+        $resultVery = $oEmpresas->veryficarcodigo($idvery);
         $resultVery = $resultVery[0];
         if($resultVery['resultado']==1 and $resultVery['estado']==1){
             

@@ -1,21 +1,21 @@
 <?php
 $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
-$sql = "SELECT * FROM empresas where estado = 1 and mail <> '' and mail not like '%eliminado%'";
-//$sql = "SELECT * FROM `consultores` where estado = 1 and mail <> '' and mail not like '%eliminado%'";
+//$sql = "SELECT * FROM empresas where estado = 1 and mail <> '' and mail not like '%eliminado%'";
+$sql = "SELECT * FROM `consultores` where estado = 1 and mail <> '' and mail not like '%eliminado%'";
 //$sql = "SELECT * FROM empresas where id = '923'";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 while($reg = $stmt->fetch(PDO::FETCH_ASSOC)){
     $id = $reg['id'];
     $mail = $reg['mail'];
-    $nombre = $reg['nombre_proponente'];
-    //$nombre = $reg['nombre_completo'];
-    if($reg['tipo']==5)
-    $nivel=4;
-    else
-    $nivel=2;
+    //$nombre = $reg['nombre_proponente'];
+    $nombre = $reg['nombre_completo'];
+    //if($reg['tipo']==5)
+    //$nivel=4;
+    //else
+    //$nivel=2;
 
-	//$nivel = 7;
+	$nivel = 7;
     registromanual($id,$mail,$nombre,$nivel);
 }    
 function registromanual($id,$mail,$nombre,$nivel){
@@ -34,8 +34,8 @@ function registromanual($id,$mail,$nombre,$nivel){
 			$insert2 = "INSERT INTO roles_users(user_id,role_id) VALUES ((SELECT id from users where username = '$mail'),'1')";
 			$stmt = $dbh->prepare($insert2);
 			$stmt->execute();
-			$update1 = "UPDATE empresas set estado = '2', user_id = (SELECT id from users where username = '$mail') where id = '$id'";
-			//$update1 = "UPDATE consultores set estado = '2', user_id = (SELECT id from users where username = '$mail') where id = '$id'";
+			//$update1 = "UPDATE empresas set estado = '2', user_id = (SELECT id from users where username = '$mail') where id = '$id'";
+			$update1 = "UPDATE consultores set estado = '2', user_id = (SELECT id from users where username = '$mail') where id = '$id'";
 			
 			$stmt = $dbh->prepare($update1);
 			$stmt->execute();
