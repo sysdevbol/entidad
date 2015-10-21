@@ -73,5 +73,64 @@ class Model_Experienciaentidad extends ORM{
             return $reg['areas'];   
         }
     }
+    public function cantregmonto($monto){
+        $sqlpar = "SELECT dato1 from busquedaempresaparametros where parametro = 'anios_exp' and activo = 'SI' order by id desc LIMIT 0,1";
+        $regpar = @mysql_fetch_assoc(mysql_query($sqlpar));
+        if(empty($regpar['dato1'])){
+            $dato = 100;
+        }else{
+            $dato = $regpar['dato1'];
+        }
+        $date = date('Y');
+        $date10 = ($date-$dato)."-01-01";
+        /*$sql = "SELECT COUNT(tb1.id_entidad) as cant FROM (SELECT experienciaentidad.id_entidad, 
+            SUM(experienciaentidad.monto_contrato) as monto
+        FROM experienciaentidad INNER JOIN empresas ON experienciaentidad.id_entidad = empresas.id
+        where empresas.estado = 4 and empresas.tipo <> 9 and empresas.tipo <> 19 group by experienciaentidad.id_entidad) as tb1 where tb1.monto >= '$monto'";
+        */
+        $sql = "SELECT COUNT(tb1.id_entidad) as cant FROM (SELECT experienciaentidad.id_entidad, 
+            SUM(experienciaentidad.monto_contrato) as montog, sum(case when (experienciaentidad.tipo = '1') then experienciaentidad.monto_contrato else 0 end) as montoesp
+        FROM experienciaentidad INNER JOIN empresas ON experienciaentidad.id_entidad = empresas.id
+        where empresas.estado = 4 and empresas.tipo <> 9 and empresas.tipo <> 19 and experienciaentidad.fecha_ini_contrato >= '$date10'
+        group by experienciaentidad.id_entidad) as tb1 where tb1.montog >= ($monto*(SELECT dato1 from busquedaempresaparametros where parametro = 'monto_exp' and activo = 'SI' order by id desc LIMIT 0,1)) and 
+        tb1.montoesp >= ($monto*(SELECT dato2 from busquedaempresaparametros where parametro = 'monto_exp' and activo = 'SI' order by id desc LIMIT 0,1))";
+        $reg = @mysql_fetch_assoc(mysql_query($sql));
+        if(empty($reg['cant'])){
+            return 0;
+        }else{
+            return $reg['cant'];   
+        }
+    }
+    public function cantreg($monto,$deptoid){
+        $sqlpar = "SELECT dato1 from busquedaempresaparametros where parametro = 'anios_exp' and activo = 'SI' order by id desc LIMIT 0,1";
+        $regpar = @mysql_fetch_assoc(mysql_query($sqlpar));
+        if(empty($regpar['dato1'])){
+            $dato = 100;
+        }else{
+            $dato = $regpar['dato1'];
+        }
+        $date = date('Y');
+        $date10 = ($date-$dato)."-01-01";
+        /*$sql = "SELECT COUNT(tb.id_entidad) as cant from (SELECT experienciaentidad.id_entidad, 
+            SUM(experienciaentidad.monto_contrato) as monto
+        FROM experienciaentidad INNER JOIN empresas ON experienciaentidad.id_entidad = empresas.id
+        where empresas.estado = 4 and empresas.tipo <> 9 and empresas.tipo <> 19 group by experienciaentidad.id_entidad) as tb 
+        INNER JOIN departamentosinteres on tb.id_entidad = departamentosinteres.id_empresas
+        where departamentosinteres.id_departamentos = $deptoid and tb.monto >= $monto";*/
+        $sql = "SELECT COUNT(tb.id_entidad) as cant from (SELECT experienciaentidad.id_entidad, 
+        SUM(experienciaentidad.monto_contrato) as montog, sum(case when (experienciaentidad.tipo = '1') then experienciaentidad.monto_contrato else 0 end) as montoesp
+        FROM experienciaentidad INNER JOIN empresas ON experienciaentidad.id_entidad = empresas.id
+        where empresas.estado = 4 and empresas.tipo <> 9 and empresas.tipo <> 19 and experienciaentidad.fecha_ini_contrato >= '$date10' group by experienciaentidad.id_entidad) as tb 
+        INNER JOIN departamentosinteres on tb.id_entidad = departamentosinteres.id_empresas
+        where departamentosinteres.id_departamentos = $deptoid and tb.montog >= ($monto*(SELECT dato1 from busquedaempresaparametros where parametro = 'monto_exp' and activo = 'SI' order by id desc LIMIT 0,1)) and 
+        tb.montoesp >= ($monto*(SELECT dato2 from busquedaempresaparametros where parametro = 'monto_exp' and activo = 'SI' order by id desc LIMIT 0,1))";
+        $reg = @mysql_fetch_assoc(mysql_query($sql));
+        if(empty($reg['cant'])){
+            return 0;
+        }else{
+            return $reg['cant'];   
+        }
+    }
+
 }
 ?>

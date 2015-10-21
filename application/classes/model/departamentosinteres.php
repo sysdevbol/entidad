@@ -39,6 +39,17 @@ class Model_Departamentosinteres extends ORM{
         }else{
             return "incompleto";
         }
+    }
+    public function cantregdeptosinteres($deptoid){
+        $sql = "SELECT COUNT(departamentosinteres.id_empresas) as cant 
+            FROM departamentosinteres INNER JOIN empresas ON departamentosinteres.id_empresas = empresas.id
+            where empresas.estado = 4 and empresas.tipo <> 9 and empresas.tipo <> 19 and departamentosinteres.id_departamentos = $deptoid";
+        $reg = @mysql_fetch_assoc(mysql_query($sql));
+        if(!empty($reg['cant'])){
+            return $reg['cant'];
+        }else{
+            return 0;
+        }    
     } 
     
 }

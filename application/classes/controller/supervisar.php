@@ -326,7 +326,38 @@ class Controller_Supervisar extends Controller_IndexTemplate{
                                    ->bind('estados', $estados)
                                    ->bind('idu', $idu);
     }
-    
+    public function action_buscaempresa(){
+        $vista = 'supervisor/buscaempresa';
+        $this->template->title.='Busca Empresa';
+        $this->template->titulo='Busca Empresa';
+        $this->template->descripcion = '';
+        $this->template->styles = array(
+            'media/jqwidgets/styles/jqx.darkblue.css' => 'all',
+            'media/jqwidgets/styles/jqx.office.css' => 'all',
+            'media/jqwidgets/styles/jqx.base.css' => 'all',
+        );
+        if(!empty($_POST['submit']) and $_POST['submit'] == "BUSCAR"){
+            if(empty($_POST['montoproy']) and $_POST['deptoid'] == "-1"){
+                echo '<script>alert("Utilice al menos un campo de busqueda.")</script>';
+            }else{
+                if(!empty($_POST['montoproy'])){
+                    if($_POST['montoproy'] > 0){
+                        //funciones
+                        $resultado = $this->busquedaempresa($_POST['montoproy'],$_POST['deptoid']);
+                    }else{
+                        echo '<script>alert("INSERTE UN VALOR VALIDO")</script>';
+                    }
+                }else{
+                    $resultado = $this->busquedaempresa(0,$_POST['deptoid']);   
+                }
+            }
+        }
+        $user = $this->user;
+        $username = $this->user->username;
+        $this->template->content = View::factory($vista)
+                                    ->bind('username', $username)
+                                    ->bind('resultado', $resultado);
+    }
     public function exportarconsultor(){
          $sql = "SELECT consultores.nombre_completo, 
     tipoclasificacion.tipo, 
@@ -538,6 +569,21 @@ where empresas.tipo <> 9 and empresas.tipo <> 19";
         $objWriter->save('php://output');
         exit;
         mysql_close ();
+    }
+    public function busquedaempresa($monto,$deptoid){
+        if($monto == 0 and $deptoid != "-1"){
+            $odeptosint = new Model_Departamentosinteres();
+            $result = $odeptosint->cantregdeptosinteres($deptoid);
+        }
+        if($deptoid == "-1" and $monto != 0){
+            $omonto = new Model_Experienciaentidad();
+            $result = $omonto->cantregmonto($monto);
+        }
+        if($monto != 0 and $deptoid != "-1"){
+            $oexp = new Model_Experienciaentidad();
+            $result = $oexp->cantreg($monto,$deptoid);
+        }
+        return $result;
     }
     
   
