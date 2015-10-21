@@ -34,5 +34,28 @@ class Model_Proveedormateriales extends ORM{
     		return "incompleto";
     	}
     }
+    public function cantreg($item,$deptoid){
+        $search = '%'.$deptoid.'%';
+        $sql = "SELECT COUNT(empresas.id) as cant FROM proveedormateriales INNER JOIN empresas on proveedormateriales.empresa_id = empresas.id 
+        where proveedormateriales.material_id = '$item' and proveedormateriales.departamentos LIKE '$search' and empresas.estado and empresas.estado = '4' and (empresas.tipo = 9 or empresas.estado = 19)";
+        $reg = @mysql_fetch_assoc(mysql_query($sql));
+        if(!empty($reg['cant'])){
+            return $reg['cant'];
+        }else{
+            return 0;
+        }
+    }
+    public function cantregmuni($item,$deptoid,$muniid){
+        $search = '%'.$deptoid.'%';
+        $search2 = '%'.$muniid.'%';
+        $sql="SELECT COUNT(empresas.id) as cant FROM proveedormateriales INNER JOIN empresas on proveedormateriales.empresa_id = empresas.id 
+        where proveedormateriales.material_id = '$item' and proveedormateriales.departamentos LIKE '$search' and proveedormateriales.municipios LIKE '$search2' and empresas.estado = '4' and (empresas.tipo = 9 or empresas.estado = 19)";   
+        $reg = @mysql_fetch_assoc(mysql_query($sql));
+        if(!empty($reg['cant'])){
+            return $reg['cant'];
+        }else{
+            return 0;
+        }
+    }
 }
 ?>

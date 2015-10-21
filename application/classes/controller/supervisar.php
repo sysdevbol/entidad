@@ -326,6 +326,52 @@ class Controller_Supervisar extends Controller_IndexTemplate{
                                    ->bind('estados', $estados)
                                    ->bind('idu', $idu);
     }
+    public function action_buscaproovedor(){
+        $vista = 'supervisor/buscaproveedor';
+        $this->template->title.='Busca Proveedor';
+        $this->template->titulo='Busca Proveedor';
+        $this->template->descripcion = '';
+        $this->template->styles = array(
+            'media/jqwidgets/styles/jqx.darkblue.css' => 'all',
+            'media/jqwidgets/styles/jqx.office.css' => 'all',
+            'media/jqwidgets/styles/jqx.base.css' => 'all',
+        );
+        if(!empty($_POST['submit']) and $_POST['submit'] == "BUSCAR"){
+            if($_POST['item'] == "-1" or $_POST['deptoid'] == "-1"){
+                echo '<script>alert("Utilice al menos ITEM y DEPARTAMENTO para generar un resultado.")</script>';
+            }else{
+                $id1 = $_POST['item'];
+                $id2 = $_POST['deptoid'];
+                $id3 = $_POST['muniid'];
+                $resultado = $this->busquematerial($id1,$id2,$id3);
+            }
+        }
+        if(!empty($_GET['iddepto'])){
+            $iddepto = $_GET['iddepto'];
+        }else{
+            $iddepto = 0;    
+        }
+        if(!empty($_GET['iditem'])){
+            $iditem = $_GET['iditem'];
+        }else{
+            $iditem = 0;
+        }
+        if(!empty($_GET['muniid'])){
+            $idmuni = $_GET['muniid'];
+        }else{
+            $idmuni = 0; 
+        }    
+        
+        
+        $user = $this->user;
+        $username = $this->user->username;
+        $this->template->content = View::factory($vista)
+                                    ->bind('username', $username)
+                                    ->bind('iddepto', $iddepto)
+                                    ->bind('iditem', $iditem)
+                                    ->bind('idmuni', $idmuni)
+                                    ->bind('resultado', $resultado);
+    }
     public function action_buscaempresa(){
         $vista = 'supervisor/buscaempresa';
         $this->template->title.='Busca Empresa';
@@ -582,6 +628,16 @@ where empresas.tipo <> 9 and empresas.tipo <> 19";
         if($monto != 0 and $deptoid != "-1"){
             $oexp = new Model_Experienciaentidad();
             $result = $oexp->cantreg($monto,$deptoid);
+        }
+        return $result;
+    }
+    public function busquematerial($item,$deptoid,$muniid){
+        if($muniid == "-1"){
+            $oprovmat = new Model_Proveedormateriales();
+            $result = $oprovmat->cantreg($item,$deptoid);
+        }else{
+            $oprovmat = new Model_Proveedormateriales();
+            $result = $oprovmat->cantregmuni($item,$deptoid,$muniid);
         }
         return $result;
     }
