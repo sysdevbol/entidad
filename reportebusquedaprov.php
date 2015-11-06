@@ -348,14 +348,14 @@ if (isset($_GET['iditem']) and isset($_GET['iddepto']) and isset($_GET['resp']))
         $search1 = '%'.$idmuni.'%';
         $sql = "SELECT empresas.nombre_proponente,empresas.nombres_representante,empresas.nit,empresas.matricula,empresas.celular,empresas.mail,CONCAT(empresas.ci_representante,'-',departamentos.departamento) as ci 
         FROM proveedormateriales INNER JOIN empresas on proveedormateriales.empresa_id = empresas.id 
-        INNER JOIN departamentos on empresas.ci_expedido = departamentos.id
+        LEFT JOIN departamentos on empresas.ci_expedido = departamentos.id
         where proveedormateriales.material_id = '$iditem' and proveedormateriales.departamentos LIKE '$search' and proveedormateriales.municipios LIKE '$search1'
         and empresas.estado = '4' and empresas.tipo = 9 or empresas.estado = 19";
     }else{
         $search = '%'.$iddepto.'%';
         $sql = "SELECT empresas.nombre_proponente,empresas.nombres_representante,empresas.nit,empresas.matricula,empresas.celular,empresas.mail,CONCAT(empresas.ci_representante,'-',departamentos.departamento) as ci 
         FROM proveedormateriales INNER JOIN empresas on proveedormateriales.empresa_id = empresas.id 
-        INNER JOIN departamentos on empresas.ci_expedido = departamentos.id
+        LEFT JOIN departamentos on empresas.ci_expedido = departamentos.id
         where proveedormateriales.material_id = '$iditem' and proveedormateriales.departamentos LIKE '$search' 
         and empresas.estado = '4' and empresas.tipo = 9 or empresas.estado = 19";
     }

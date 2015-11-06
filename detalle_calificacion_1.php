@@ -1,6 +1,6 @@
 <?php
-$dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
-//$dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '', array(PDO::ATTR_PERSISTENT => false));
+//$dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
+$dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '', array(PDO::ATTR_PERSISTENT => false));
 ?>
 <link rel="stylesheet" href="/media/css/jquery-ui.css" />
 <style>
@@ -546,8 +546,8 @@ Consultor.</pre></td>
           <?php
         }
         function patroncalifica2($clasificacion,$proyecto,$area,$tipo){
-          $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
-          //$dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '', array(PDO::ATTR_PERSISTENT => false));
+          //$dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
+          $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '', array(PDO::ATTR_PERSISTENT => false));
             $tipolike = '%'.$tipo.'%';
             $sql2="SELECT * from patrondecalificacion where patrondecalificacion.id_areacalificaion = '$area' 
             and id_clasificacion = '$clasificacion' AND id_proyecto = '$proyecto' and rango1 like '$tipolike'";
@@ -561,8 +561,8 @@ Consultor.</pre></td>
             }   
         }
         function patroncalifica1($clasificacion,$proyecto,$area,$rangovalor){
-          $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
-          //$dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '', array(PDO::ATTR_PERSISTENT => false));
+          //$dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
+          $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '', array(PDO::ATTR_PERSISTENT => false));
             $sql2="SELECT * from patrondecalificacion where patrondecalificacion.id_areacalificaion = '$area' 
             and id_clasificacion = '$clasificacion' AND id_proyecto = '$proyecto' and (CAST(rango1 as DECIMAL(0)) <= $rangovalor and CAST(rango2 as DECIMAL(0)) > $rangovalor)";
             $stmt = $dbh->prepare($sql2);
@@ -575,8 +575,8 @@ Consultor.</pre></td>
             }     
         }
         function patroncalifica3($clasificacion,$proyecto,$area,$exparea){
-          $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
-          //$dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '', array(PDO::ATTR_PERSISTENT => false));
+          //$dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivienda', array(PDO::ATTR_PERSISTENT => false));
+          $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '', array(PDO::ATTR_PERSISTENT => false));
             $areain = '('.$exparea.')';
             $sql2="SELECT SUM(puntaje) as 'puntajesum' from patrondecalificacion where patrondecalificacion.id_areacalificaion = '$area' 
             and id_clasificacion = '$clasificacion' AND id_proyecto = '$proyecto' and rango1 in $areain";

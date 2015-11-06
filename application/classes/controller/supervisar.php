@@ -326,6 +326,32 @@ class Controller_Supervisar extends Controller_IndexTemplate{
                                    ->bind('estados', $estados)
                                    ->bind('idu', $idu);
     }
+    public function action_verifiquereporte(){
+        $vista = 'supervisor/verifiquereporte';
+        $this->template->title.='Verifique Reporte';
+        $this->template->titulo='Verifique Reporte';
+        $this->template->descripcion = '';
+        $this->template->styles = array(
+            'media/jqwidgets/styles/jqx.darkblue.css' => 'all',
+            'media/jqwidgets/styles/jqx.office.css' => 'all',
+            'media/jqwidgets/styles/jqx.base.css' => 'all',
+        );
+        if(!empty($_POST['submit']) and $_POST['submit'] == "VERIFICAR"){
+            $codigo = strtoupper($_POST['codigo']);
+            $codigo = trim($_POST['codigo']);
+            if(empty($codigo)){
+                echo '<script>alert("INGRESE UN CODIGO")</script>';
+            }else{
+                $codigo = str_replace('AB', '', $codigo);
+                $codigo = str_replace('XY', '', $codigo);
+                $idcodigo = $codigo-234;
+                $ohistory = new Model_Historybusqueda();
+                $result = $ohistory->datoscodigo($idcodigo);
+            }
+        }
+        $this->template->content = View::factory($vista)
+                        ->bind('result', $result);
+    }
     public function action_buscaproovedor(){
         $vista = 'supervisor/buscaproveedor';
         $this->template->title.='Busca Proveedor';
