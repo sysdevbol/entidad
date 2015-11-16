@@ -23,6 +23,12 @@ class Model_Consultores extends ORM{
                 WHERE user_id = '$userid'";
         return db::query(Database::SELECT, $sql)->execute();
     }
+    public function datosconsultor2($userid) {
+        $sql = "SELECT *
+                FROM consultores
+                WHERE mail = '$userid'";
+        return db::query(Database::SELECT, $sql)->execute();
+    }
 
     
     public function listaprconsultores(){

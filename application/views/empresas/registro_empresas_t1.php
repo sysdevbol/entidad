@@ -262,8 +262,9 @@ textarea:focus {
   <div class="control-group">
       <label class="desc" id="title1" for="Field1"><?php echo utf8_encode('Rubro:')?></label>
       <div>       
-      SUPERVISION<input type="radio" name="rubro" id = "rubro" value="49"/>
-      CONSTRUCCION<input type="radio" name="rubro" id = "rubro" value="17" checked/>
+      CONSTRUCCION<input type="checkbox" name="reg[17]" id = "rubro" checked/>
+      SUPERVISION<input type="checkbox" name="reg[49]" id = "rubro" />
+      INSPECTORIA<input type="checkbox" name="reg[50]" id = "rubro" />
       </div>
   </div>
     

@@ -661,7 +661,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
             $user = $this->user;
             $idu = $this->user->id;
             $oEmpresas = new Model_Consultores();
-            $resultDatos = $oEmpresas->datosconsultor($this->user->username);
+            $resultDatos = $oEmpresas->datosconsultor2($this->user->username);
             $resultDatos=$resultDatos[0];
             $this->template->content = View::factory($vista)
                                        ->bind('user', $user)
