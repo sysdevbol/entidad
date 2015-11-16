@@ -634,6 +634,41 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                                        ->bind('ide',$resultDatos['id'])
                                        ->bind('idu', $idu);
         }
+        public function action_deptosinteres2(){
+            $vista = 'empresas/departamentos_interes';
+            if(isset($_POST['guardar']) and $_POST['guardar'] == "Guardar Seleccionados"){
+                //print_r($_POST);
+                if(!empty($_POST['reg'])){
+                    $registros = array_keys($_POST['reg']);
+                    $registros = implode(",", $registros);
+                    $registros = explode(",", $registros);
+                    //print_r($registros);
+                    //print_r($_POST['ide']);
+                    $modeldeptosinteres = new Model_Departamentosinteres();
+                    $modeldeptosinteres->guardardeptosinteres2($registros,$_POST['ide']);
+                }else{
+                    echo '<script>alert("Eliga al menos un departamento.");</script>';
+                }
+            }
+            $this->template->title.='Departamentos de Interes para la Empresa';
+            $this->template->descripcion = '';
+            $this->template->styles = array(
+                'media/jqwidgets/styles/jqx.darkblue.css' => 'all',
+                'media/jqwidgets/styles/jqx.office.css' => 'all',
+                'media/jqwidgets/styles/jqx.base.css' => 'all',
+            );
+            $tiposi = 'si';
+            $user = $this->user;
+            $idu = $this->user->id;
+            $oEmpresas = new Model_Consultores();
+            $resultDatos = $oEmpresas->datosconsultor($this->user->username);
+            $resultDatos=$resultDatos[0];
+            $this->template->content = View::factory($vista)
+                                       ->bind('user', $user)
+                                       ->bind('ide',$resultDatos['id'])
+                                       ->bind('consultor',$tiposi)
+                                       ->bind('idu', $idu);
+        }
 
 
         public function action_experiencia(){

@@ -12,8 +12,13 @@ var theme2 = 'office';
 </style>
 <?php
 $id_empresas = $ide;
-$modeldinteres = new Model_Departamentosinteres();
-$resultado = $modeldinteres->listaprdeptosinteres($id_empresas);
+if($consultor == "si"){
+    $modeldinteres = new Model_Departamentosinteres();
+    $resultado = $modeldinteres->listaprdeptosinteres($id_empresas,"Consultor");
+}else{
+    $modeldinteres = new Model_Departamentosinteres();
+    $resultado = $modeldinteres->listaprdeptosinteres($id_empresas,"EmpresaProveedor");
+}
 $idd1 = "";
 $idd2 = "";
 $idd3 = "";
@@ -89,4 +94,12 @@ foreach ($resultado as $key => $value) {
 </div>            
             </center> 
         </form>    
-    
+<?php
+if(!empty($_POST['guardar']) and $_POST['guardar'] == "Guardar Seleccionados"){
+?>
+<div class="control-group">
+    <label><h3><?php echo utf8_encode('Guardado Correctamente !!!')?></h3></label>
+</div>  
+<?php    
+}
+?>    

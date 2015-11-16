@@ -5,8 +5,8 @@ class Model_Departamentosinteres extends ORM{
     protected $_table_names_plural = false;
 
     
-    public function listaprdeptosinteres($id_empresa){
-            $sql="SELECT * FROM departamentosinteres where `id_empresas` = '$id_empresa'";
+    public function listaprdeptosinteres($id_empresa,$tipo){
+            $sql="SELECT * FROM departamentosinteres where `id_empresas` = '$id_empresa' and tipo = '$tipo'";
             $deptosinteres = array();
 
            $result = db::query(Database::SELECT, $sql)->execute();
@@ -30,7 +30,16 @@ class Model_Departamentosinteres extends ORM{
             $insert = "INSERT into departamentosinteres(`id_empresas`,`id_departamentos`) values('$id_empresa','$iddeptos') ";
             mysql_query($insert);
         }
-    } 
+    }
+    public function guardardeptosinteres2($arraydeptos,$id_empresa){
+        $delete = "DELETE from departamentosinteres where id_empresas = '$id_empresa' and tipo = 'Consultor'";
+        mysql_query($delete);
+        for($i=0;$i<=count($arraydeptos)-1;$i++){
+            $iddeptos = $arraydeptos[$i];
+            $insert = "INSERT into departamentosinteres(`id_empresas`,`id_departamentos`,`tipo`) values('$id_empresa','$iddeptos','Consultor') ";
+            mysql_query($insert);
+        }
+    }  
     public function verificadint($idempresa){
         $sql = "SELECT * from departamentosinteres where `id_empresas` = $idempresa";
         $reg = @mysql_fetch_assoc(mysql_query($sql));
