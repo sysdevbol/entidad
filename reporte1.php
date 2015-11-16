@@ -68,8 +68,10 @@ $dbh = new PDO('mysql:host=localhost;port=3306;dbname=empresas', 'root', '43vivi
 		$stmt = $dbh->prepare($sqlexpsc1);
     	$stmt->execute();
     	$regexpsc1 = $stmt->fetch(PDO::FETCH_ASSOC);
-		$idsocios = "(".$regexpsc1['idsocios'].",".$idregistro_entidad.")";
-		$sql1 = "SELECT `Contratante`,`Objeto del Contrato`,`Ubicacion`,`Monto`,`Fecha Inicio`,`Fecha Fin`,`Meses` from reporteexen where `ID Entidad` in $idsocios";
+		$idsocios = "(".$regexpsc1['idsocios'].")";
+		$sql1 = "SELECT  CONCAT('[',`Contratante`,'] SOCIO:',empresas.`nombre_proponente`) as 'Contratante', `Objeto del Contrato`,`Ubicacion`,`Monto`,`Fecha Inicio`,`Fecha Fin`,`Meses` from reporteexen 
+		inner join `empresas` on `reporteexen`.`ID Entidad` = empresas.`id`
+		where `ID Entidad` in $idsocios";
 	}else{
 		$sql1 = "SELECT `Contratante`,`Objeto del Contrato`,`Ubicacion`,`Monto`,`Fecha Inicio`,`Fecha Fin`,`Meses` from reporteexen where `ID Entidad` = '$idregistro_entidad'";	
 	}
