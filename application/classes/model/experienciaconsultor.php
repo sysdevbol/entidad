@@ -8,7 +8,7 @@ class Model_Experienciaconsultor extends ORM{
     public function listaprexperiencia($id_consultor){
             $sql="SELECT experienciaconsultor.id,experienciaconsultor.nombre_contratante,experienciaconsultor.objeto_contrato,
 experienciaconsultor.lugar_contrato,experienciaconsultor.monto_contrato,experienciaconsultor.descripcion_contrato,
-experienciaconsultor.inicio_contrato,experienciaconsultor.fin_contrato,tipoexperiencia.tipo, departamentos.departamento 
+experienciaconsultor.inicio_contrato,experienciaconsultor.fin_contrato,tipoexperiencia.tipo, departamentos.departamento, experienciaconsultor.id_rubro 
 FROM experienciaconsultor 
 INNER JOIN tipoexperiencia ON experienciaconsultor.id_tipoexperiencia = tipoexperiencia.id 
 LEFT JOIN departamentos ON experienciaconsultor.id_departamento = departamentos.id where `id_consultor` = '$id_consultor'";
@@ -28,6 +28,7 @@ LEFT JOIN departamentos ON experienciaconsultor.id_departamento = departamentos.
                             'inicio_contrato' => $r['inicio_contrato'],
                             'fin_contrato' => $r['fin_contrato'],
                             'departamento' => $r['departamento'],
+                            'rubro' => $r['id_rubro'],
                         );
                         $i++;
                     }

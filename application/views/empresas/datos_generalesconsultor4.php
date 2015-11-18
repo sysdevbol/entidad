@@ -223,6 +223,13 @@ textarea:focus {
 .control-group.success .input-prepend .add-on, 
 .control-group.success .input-append .add-on {color:#468847;background-color:#dff0d8;border-color:#468847}
 </style>
+<?php
+$idconsultor1 = $datosC['id'];
+$tipo = $datosC['tipo'];
+$clasificacion = 3;
+$oexperienciarubro = new Model_Rubroarea();
+$result1 = $oexperienciarubro->listaprrubrosareas($idconsultor1,$tipo,$clasificacion); 
+?>
 <div class="row mt">
   <div class="col-lg-12">
     <div class="form-panel">
@@ -290,9 +297,23 @@ textarea:focus {
           <div class="control-group">
           <label class="desc" id="title1" for="Field1"><?php echo utf8_encode('Tipo Experiencia:')?></label>
           <div>
-
           <input type="radio" id="id_tipoexperiencia" name="id_tipoexperiencia" value="1" checked /> Experiencia Especifica
           <input type="radio" id="id_tipoexperiencia" name="id_tipoexperiencia" value="2" /> Experiencia General
+          </div>
+          </div>
+          <div class="control-group">
+          <label class="desc" id="title1" for="Field1"><?php echo utf8_encode('La siguiente experiencia esta bajo el rubro de :')?></label>
+          <div>
+          <?php
+          foreach ($result1 as $key1 => $value1) {
+          if($value1['selected'] == '1'){
+          ?>
+          <?php echo  $value1['nombre'] ?> <input type="radio" name="rubro" id="rubro" value="<?php echo $value1['id'] ?>" /><br>
+          <?php
+          }
+          } 
+          ?>  
+          Otro <input type="radio" name="rubro" id="rubro" value="-1" checked />
           </div>
           </div>
           <div class="control-group">     
@@ -345,7 +366,7 @@ textarea:focus {
           Fecha_Fin
           </td>
           <td>
-
+          Experiencia bajo el rubro de ...
           </td>
           <td style="color:red">
             <input type="submit" name="eliminar" value="Eliminar"/>
@@ -406,6 +427,18 @@ textarea:focus {
           <?php echo Form::input('fin_contrato1',$fechana,array('id'=>'fin_contrato1','class' => 'field text fn required date')); ?>
           </td>
           <td>
+          <?php
+          foreach ($result1 as $key1 => $value1) {
+          if($value1['selected'] == '1'){
+          ?>
+          <?php echo  $value1['nombre'] ?> <input type="radio" name="rubro1" id="rubro1" value="<?php echo $value1['id'] ?>" <?php if($value['rubro'] == $value1['id']){ echo "checked"; } ?> /><br>
+          <?php
+          }
+          } 
+          ?>
+          Otro <input type="radio" name="rubro1" id="rubro1" value="-1" <?php if($value['rubro'] == '-1'){ echo "checked"; } ?> /> 
+          </td>
+          <td>
 
           <input type="radio" id="tipo1" name="tipo1" value="1" checked /> Experiencia Especifica
           <input type="radio" id="tipo1" name="tipo1" value="2" /> Experiencia General
@@ -445,6 +478,19 @@ textarea:focus {
           </td>
           <td>
           <?php echo $value['fin_contrato']; ?>
+          </td>
+          <td>
+          <?php 
+          if($value['rubro'] == "-1"){
+          echo "Otro";
+          }else{
+            foreach ($result1 as $key1 => $value1) {
+            if($value['rubro'] == $value1['id']){
+            echo  $value1['nombre'];
+            }
+            }
+          } 
+          ?>
           </td>
           <td>
           <?php echo $value['tipo']; ?>

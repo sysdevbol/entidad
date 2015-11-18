@@ -17,6 +17,7 @@ class Model_Formacionconsultor extends ORM{
                             'titulo' => $r['titulo'],
                             'universidad_institucion' => $r['universidad_institucion'],
                             'fecha_diplomaconclusion' => $r['fecha_diplomaconclusion'],
+                            'tipo' => $r['tipo'],
                         );
                         $i++;
                     }

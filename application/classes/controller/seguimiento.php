@@ -40,6 +40,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
             $formacion = ORM::factory('formacionconsultor');
             $formacion->id_consultor = $idconsultor;
             $formacion->titulo = $_POST['titulo'];
+            $formacion->tipo = $_POST['tipotitulo'];
             $formacion->universidad_institucion = $_POST['universidad_institucion'];
             list ( $dia, $mes, $anio ) = explode ( "/",$_POST['fecha_diplomaconclusion']);
             $fecha = $anio . "-" . $mes . "-" . $dia;
@@ -54,6 +55,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
             list ( $dia, $mes, $anio ) = explode ( "/",$_POST['fecha_diplomaconclusion1']);
             $fecha = $anio . "-" . $mes . "-" . $dia;
             $formacion->fecha_diplomaconclusion = $fecha;
+            $formacion->tipo = $_POST['tipotitulo1'];
             $formacion->save();
             $this->request->redirect('seguimiento/datosgeneralesconsultor1');
         }
@@ -196,6 +198,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
             list ( $dia, $mes, $anio ) = explode ( "/",$_POST['fin_contrato']);
             $fecha = $anio . "-" . $mes . "-" . $dia;
             $experiencia->fin_contrato = $fecha;
+            $experiencia->id_rubro = $_POST['rubro'];
             $experiencia->save();
 
             
@@ -216,7 +219,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
             list ( $dia, $mes, $anio ) = explode ( "/",$_POST['fin_contrato1']);
             $fecha = $anio . "-" . $mes . "-" . $dia;
             $experiencia->fin_contrato = $fecha;
-            
+            $experiencia->id_rubro = $_POST['rubro1'];
             $experiencia->save();
             $this->request->redirect('seguimiento/datosgeneralesconsultor4');
         }
@@ -696,7 +699,7 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
             $experienciaentidad->relacion_estado = $_POST['estado'];
             $experienciaentidad->id_area = $_POST['area'];
             $experienciaentidad->id_departamento = $_POST['departamento'];
-            
+            $experienciaentidad->id_rubro = $_POST['rubro'];
             $experienciaentidad->save();
         }            
         

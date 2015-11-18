@@ -251,10 +251,21 @@ textarea:focus {
                       </div>
                       </div>
                       <div class="control-group">     
-                      <label class="desc" id="title1" for="Field1"><?php echo utf8_encode('Fecha de Titulo en Provision Nacional :')?></label>
+                      <label class="desc" id="title1" for="Field1"><?php echo utf8_encode('Fecha de Titulo :')?></label>
                       <div>
                             <?php echo Form::input('fecha_diplomaconclusion',NULL,array('id'=>'fecha_diplomaconclusion','class' => 'field text fn required date')); ?>
                         </div>
+                      </div>
+                      <div class="control-group">
+                      <label class="desc" id="" for=""><?php echo utf8_encode('Titulo o Certificado en :')?></label>
+                      <div>
+                            <input type="radio" id="tipotitulo" name="tipotitulo" value="TPN" checked /> Titulo en Provision Nacional<br>
+                            <input type="radio" id="tipotitulo" name="tipotitulo" value="TA" /> Titulo Academico<br>
+                            <input type="radio" id="tipotitulo" name="tipotitulo" value="CE" /> Certificado de Egreso<br>
+                            <input type="radio" id="tipotitulo" name="tipotitulo" value="TT" /> Titulo Tecnico Superior<br>
+                            <input type="radio" id="tipotitulo" name="tipotitulo" value="TB" /> Titulo de Bachiller<br>
+                            <input type="radio" id="tipotitulo" name="tipotitulo" value="OO" /> Otros
+                      </div>
                       </div>
                       <div style="text-align: center;">
                         <input type="hidden" name="idconsultor" id="idconsultor" value="<?php echo $datosC['id'] ?>"/>
@@ -277,7 +288,10 @@ textarea:focus {
                                   Universidad/Institucion
                                 </td>
                                 <td>
-                                  Fecha_Titulo_en_Provision_Nacional
+                                  Fecha_Titulo
+                                </td>
+                                <td>
+                                  TIPO
                                 </td>
                                 <td style="color:red">
             <input type="submit" name="eliminar" value="Eliminar"/>
@@ -309,6 +323,14 @@ textarea:focus {
                                                                               
                                 </td>
                                 <td>
+                                  <input type="radio" id="tipotitulo1" name="tipotitulo1" value="TPN" <?php if($value['tipo'] == "TPN"){ echo "checked"; } ?> /> Titulo en Provision Nacional<br>
+                                  <input type="radio" id="tipotitulo1" name="tipotitulo1" value="TA" <?php if($value['tipo'] == "TA"){ echo "checked"; } ?> /> Titulo Academico<br>
+                                  <input type="radio" id="tipotitulo1" name="tipotitulo1" value="CE" <?php if($value['tipo'] == "CE"){ echo "checked"; } ?> /> Certificado de Egreso<br>
+                                  <input type="radio" id="tipotitulo1" name="tipotitulo1" value="TT" <?php if($value['tipo'] == "TT"){ echo "checked"; } ?> /> Titulo Tecnico Superior<br>
+                                  <input type="radio" id="tipotitulo1" name="tipotitulo1" value="TB" <?php if($value['tipo'] == "TB"){ echo "checked"; } ?> /> Titulo de Bachiller<br>
+                                  <input type="radio" id="tipotitulo1" name="tipotitulo1" value="OO" <?php if($value['tipo'] == "OO"){ echo "checked"; } ?> /> Otros
+                                </td>
+                                <td>
                                   <input type="hidden" name="idformacion" id="idformacion" value="<?php echo $_GET['idupdate']; ?>"/>
                                   <input type="submit" name="guardar" value="Actualizar" class="btn btn-success"/>
                                   <a href="javascript:history.back(1)" class="btn btn-danger">Cancelar</a>
@@ -326,6 +348,28 @@ textarea:focus {
                                 </td>
                                 <td>
                                   <?php echo $value['fecha_diplomaconclusion']; ?>
+                                </td>
+                                <td>
+                                  <?php  
+                                  if($value['tipo'] == "TPN"){
+                                    echo "Titulo en Provision Nacional";
+                                  }
+                                  if($value['tipo'] == "TA"){
+                                    echo "Titulo Academico";
+                                  }
+                                  if($value['tipo'] == "TT"){
+                                    echo "Titulo Tecnico Superior";
+                                  }
+                                  if($value['tipo'] == "CE"){
+                                    echo "Certificado de Egreso";
+                                  }
+                                  if($value['tipo'] == "TB"){
+                                    echo "Titulo de Bachiller";
+                                  }
+                                  if($value['tipo'] == "OO"){
+                                    echo "Otro";
+                                  }
+                                  ?>
                                 </td>
                                 <td>
                                   

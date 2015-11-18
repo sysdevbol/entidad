@@ -438,6 +438,14 @@ textarea:focus {
                 <label id="msg" style="float:right;color: red;"> </label>
                 <form class="form-horizontal" method="post" action="" name="basic_validate" id="basic_validate" novalidate="novalidate" >
                      <div class="control-group">
+                         <p>La siguiente experiencia esta bajo el rubro de:</p>
+                         <p>Construccion <input type="radio" name="rubro" id="rubro" value="17" checked /><br>
+                        Supervision <input type="radio" name="rubro" id="rubro" value="49" /><br>
+                        Inspectoria <input type="radio" name="rubro" id="rubro" value="50" /><br>
+                        Otro <input type="radio" name="rubro" id="rubro" value="-1" /><br>
+                         </p>
+                     </div>
+                     <div class="control-group">
                          <p>Nombre Contratante:</p>
                          <textarea id="contratante" name="contratante" style="width: 99%; font-size: 14px;" rows="1" class="required"></textarea>
                      </div>
