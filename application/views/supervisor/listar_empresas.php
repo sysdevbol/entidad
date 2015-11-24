@@ -284,12 +284,12 @@ var theme2 = 'office';
                         </ul>
                     </li>
                     
-                    <!--<li>
+                    <li>
                     <a href="#">+ <img alt="Inicio" title="Dashboard" src="/media/images/32/empty-clipboard.png" style="height: 25px;" align="absmiddle"/> Calificar Empresa</a>
                         <ul style='width: 250px;'>
                             <li style="text-align: left;"><a id="calificar" class="" href="javascript:void(0)" style="width: 100px; font-size: 10px;padding: 7px 1px 7px 3px;">Calificar</a></li>
                         </ul>
-                    </li>-->
+                    </li>
                     <li style="text-align: left;"><a id="excelExport" class="" href="?exportentidad=ok" style="width: 100px; font-size: 15px;padding: 7px 1px 7px 3px;">EXCEL</a></li>
                 </ul>
     </div>

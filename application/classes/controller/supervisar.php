@@ -430,6 +430,72 @@ class Controller_Supervisar extends Controller_IndexTemplate{
                                     ->bind('username', $username)
                                     ->bind('resultado', $resultado);
     }
+    public function action_buscaconsultor(){
+        $vista = 'supervisor/buscaconsultor';
+        $this->template->title.='Busca Consultor';
+        $this->template->titulo='Busca Consultor';
+        $this->template->descripcion = '';
+        $this->template->styles = array(
+            'media/jqwidgets/styles/jqx.darkblue.css' => 'all',
+            'media/jqwidgets/styles/jqx.office.css' => 'all',
+            'media/jqwidgets/styles/jqx.base.css' => 'all',
+        );
+        if(!empty($_POST['submit']) and $_POST['submit'] == "BUSCAR"){
+            
+            if($_POST['deptoid'] == "-1" or $_POST['tipo'] == "-1" or $_POST['tipo1'] == "-1"){
+                echo '<script>alert("Utilice todos los campos de busqueda.")</script>';
+            }else{
+                if($_POST['tipo'] == "17"){
+                    if($_POST['expesp'] > 0){
+                        $resultado = $this->busquedaconsultor($_POST['deptoid'],$_POST['tipo'],$_POST['tipo1'],$_POST['expesp'],$_POST['expg']);
+                    }else{
+                        echo '<script>alert("INSERTE VALORES VALIDOS")</script>';
+                    }
+                }else{
+                    if($_POST['expesp'] > 0 and $_POST['expg'] > 0){
+                        $resultado = $this->busquedaconsultor($_POST['deptoid'],$_POST['tipo'],$_POST['tipo1'],$_POST['expesp'],$_POST['expg']);
+                    }else{
+                        echo '<script>alert("INSERTE VALORES VALIDOS")</script>';
+                    }
+                }
+            }
+        }
+        if(!empty($_GET['iditem'])){
+            $iditem = $_GET['iditem'];
+        }else{
+            $iditem = 0;
+        }
+        if(!empty($_GET['prop'])){
+            $prop = $_GET['prop'];
+        }else{
+            $prop = 0;
+        }
+        if(empty($resultado[0])){
+            $rescantidad = 0;
+        }else{
+            $rescantidad = $resultado[0];
+        }
+        if(empty($resultado[1])){
+            $residsc = 0;
+        }else{
+            $residsc = $resultado[1];
+        }
+        if(empty($resultado[2])){
+            $residse = 0;
+        }else{
+            $residse = $resultado[2];
+        }
+        
+        $user = $this->user;
+        $username = $this->user->username;
+        $this->template->content = View::factory($vista)
+                                    ->bind('username', $username)
+                                    ->bind('iditem', $iditem)
+                                    ->bind('prop', $prop)
+                                    ->bind('idsc', $residsc)
+                                    ->bind('idse', $residse)
+                                    ->bind('resultado', $rescantidad);
+    }
     public function exportarconsultor(){
          $sql = "SELECT consultores.nombre_completo, 
     tipoclasificacion.tipo, 
@@ -664,6 +730,46 @@ where empresas.tipo <> 9 and empresas.tipo <> 19";
         }else{
             $oprovmat = new Model_Proveedormateriales();
             $result = $oprovmat->cantregmuni($item,$deptoid,$muniid);
+        }
+        return $result;
+    }
+    /*
+    $dato1 = departamento
+    $dato2 = Tipo consultor
+    $dato3 = persona natural, empresa, ambos
+    $dato4 = experiencia especifica
+    $dato5 = experiencia general
+    */
+    public function busquedaconsultor($dato1,$dato2,$dato3,$dato4,$dato5){
+        if($dato2 == "17"){
+            $oconsultor = new Model_Experienciaconsultor();
+            $result = $oconsultor->cantpn2($dato1,$dato2,$dato4);
+            $result = array($result[0],$result[1],"0");
+        }else{
+            if($dato3 == "pn"){
+                if($dato2 == "16"){
+                    $oconsultor = new Model_Experienciaconsultor();
+                    $result = $oconsultor->cantpn1($dato1,$dato2,$dato4,$dato5);
+                    $result = array($result[0],$result[1],"0");
+                }else{
+                    $oconsultor = new Model_Experienciaconsultor();
+                    $result = $oconsultor->cantpn($dato1,$dato2,$dato4,$dato5);
+                    $result = array($result[0],$result[1],"0");
+                }
+            }
+            if($dato3 == "em"){
+                $oempresa = new Model_Experienciaentidad();
+                $result = $oempresa->cantem($dato1,$dato2,$dato4,$dato5);
+                $result = array($result[0],"0",$result[1]);
+            }
+            if($dato3 == "am"){
+                $oconsultor = new Model_Experienciaconsultor();
+                $result = $oconsultor->cantpn($dato1,$dato2,$dato4,$dato5);
+                $oempresa = new Model_Experienciaentidad();
+                $result1 = $oempresa->cantem($dato1,$dato2,$dato4,$dato5);
+                $cant = $result[0]+$result1[0];
+                $result = array($cant,$result[1],$result1[1]);
+            }
         }
         return $result;
     }

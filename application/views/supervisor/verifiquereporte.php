@@ -80,13 +80,22 @@ if($tipobusqueda[0] == "EMPRESAS"){
 <label><?php echo utf8_encode($criterioarray[2])?></label><br>
 <label><?php echo utf8_encode($criterioarray[3])?></label><br>
 <?php
-}else{
+}elseif($tipobusqueda[0] == "PROVEEDOR"){
 ?>
 <label><?php echo utf8_encode($tipobusqueda[0])?></label><br>
 <label><?php echo utf8_encode($tipobusqueda[1])?></label><br>
 <label><?php echo utf8_encode($criterioarray[1])?></label><br>
 <label><?php echo utf8_encode($criterioarray[2])?></label><br>
 <?php
+}else{
+?>
+<label><?php echo utf8_encode($tipobusqueda[0])?></label><br>
+<label><?php echo utf8_encode($tipobusqueda[1])?></label><br>
+<label><?php echo utf8_encode($criterioarray[1])?></label><br>
+<label><?php echo utf8_encode($criterioarray[2])?></label><br>
+<label><?php echo utf8_encode($criterioarray[3])?></label><br>
+<label><?php echo utf8_encode($criterioarray[4])?></label><br>
+<?php    
 }
 ?>    
 

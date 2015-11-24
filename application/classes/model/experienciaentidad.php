@@ -131,6 +131,28 @@ class Model_Experienciaentidad extends ORM{
             return $reg['cant'];   
         }
     }
+    public function cantem($dato1,$dato2,$dato4,$dato5){
+        if($dato2 == "10"){
+            $dat21 = '49';
+        }
+        if($dato2 == "11"){
+            $dat21 = '50';
+        }
+        $sql = "SELECT COUNT(tb1.id_entidad) as 'cant', GROUP_CONCAT(tb1.id_entidad) as 'ids' from (SELECT tb.id_entidad,tb.tiemgeneral,tb.tiempoespecifico FROM (
+SELECT experienciaentidad.id_entidad, 
+(CASE WHEN((SUM(round(((to_days(experienciaentidad.fecha_fin_contrato) - to_days(experienciaentidad.fecha_ini_contrato)) / 30),2))) is NULL) then '0.00' else (SUM(round(((to_days(experienciaentidad.fecha_fin_contrato) - to_days(experienciaentidad.fecha_ini_contrato)) / 30),2))) end) as 'tiemgeneral',
+(CASE WHEN((sum(case when (experienciaentidad.tipo = '1') then round(((to_days(experienciaentidad.fecha_fin_contrato) - to_days(experienciaentidad.fecha_ini_contrato)) / 30),2) else 0 end)) is null) then '0.00' else (sum(case when (experienciaentidad.tipo = '1') then round(((to_days(experienciaentidad.fecha_fin_contrato) - to_days(experienciaentidad.fecha_ini_contrato)) / 30),2) else 0 end)) end) as 'tiempoespecifico' 
+from experienciaentidad 
+INNER join empresas on experienciaentidad.id_entidad = empresas.id where 
+empresas.ciudad = '$dato1' and empresas.estado = 4 and ('$dat21' like CONCAT('%',empresas.id_rubroarea,'%')) group by experienciaentidad.id_entidad) as tb where tb.tiemgeneral >= '$dato5' and tb.tiempoespecifico >= '$dato4') as tb1";
+        $dat = mysql_query($sql);
+        $reg = @mysql_fetch_assoc($dat);
+        $resultado = array();
+        $resultado[0] = $reg['cant'];
+        $resultado[1] = $reg['ids'];
+        return $resultado;
+    }
+    
 
 }
 ?>

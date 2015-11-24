@@ -69,6 +69,68 @@ LEFT JOIN departamentos ON experienciaconsultor.id_departamento = departamentos.
             return $reg['totalporcentaje'];   
         }
     }
+    public function cantpn($dato1,$dato2,$dato4,$dato5){
+        if($dato2 == "10"){
+            $dat21 = '11';
+        }
+        if($dato2 == "11"){
+            $dat21 = '12';
+        }
+        if($dato2 == "12"){
+            $dat21 = '13';
+        }
+        if($dato2 == "15"){
+            $dat21 = '14';
+        }
+        if($dato2 == "16"){
+            $dat21 = '15';
+        }
+        $sql = "SELECT COUNT(tb1.id_consultor) as 'cant', GROUP_CONCAT(tb1.id_consultor) as 'ids' from (SELECT tb.id_consultor,tb.tiemgeneral,tb.tiempoespecifico FROM (SELECT experienciaconsultor.id_consultor, 
+(CASE WHEN((SUM(round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2))) is NULL) then '0.00' else (SUM(round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2))) end) as 'tiemgeneral',
+(CASE WHEN((sum(case when (experienciaconsultor.id_tipoexperiencia = '1') then round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2) else 0 end)) is null) then '0.00' else (sum(case when (experienciaconsultor.id_tipoexperiencia = '1') then round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2) else 0 end)) end) as 'tiempoespecifico' 
+from experienciaconsultor 
+INNER join consultores on experienciaconsultor.id_consultor = consultores.id where 
+consultores.id_departamento = '$dato1' and consultores.estado = 4 and (consultores.tipo = '$dato2' or '$dato21' like CONCAT('%',consultores.id_rubroarea,'%')) group by experienciaconsultor.id_consultor) as tb where tb.tiemgeneral >= '$dato5' and tb.tiempoespecifico >= '$dato4') as tb1";
+        $dat = mysql_query($sql);
+        $reg = @mysql_fetch_assoc($dat);
+        $resultado = array();
+        $resultado[0] = $reg['cant'];
+        $resultado[1] = $reg['ids'];
+        return $resultado;
+    }
+    public function cantpn1($dato1,$dato2,$dato4,$dato5){
+        if($dato2 == "16"){
+            $dat21 = '15';
+        }
+        $sql = "SELECT COUNT(tb1.id_consultor) as 'cant', GROUP_CONCAT(tb1.id_consultor) as 'ids' from 
+(SELECT tb.id_consultor,tb.tiemgeneral,tb.tiempoespecifico, tb.cantexp FROM 
+(SELECT experienciaconsultor.id_consultor, 
+(CASE WHEN((SUM(round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2))) is NULL) then '0.00' else (SUM(round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2))) end) as 'tiemgeneral', 
+(CASE WHEN((sum(case when (experienciaconsultor.id_tipoexperiencia = '1') then round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2) else 0 end)) is null) then '0.00' else (sum(case when (experienciaconsultor.id_tipoexperiencia = '1') then round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2) else 0 end)) end) as 'tiempoespecifico', 
+SUM(CASE WHEN(experienciaconsultor.id_tipoexperiencia = '1') then 1 else 0 end) as 'cantexp'
+from experienciaconsultor INNER join consultores on experienciaconsultor.id_consultor = consultores.id 
+where consultores.id_departamento = '$dato1' and consultores.estado = 4 and (consultores.tipo = '$dato2' or '$dato21' like CONCAT('%',consultores.id_rubroarea,'%')) group by experienciaconsultor.id_consultor) as tb where tb.tiemgeneral >= '$dato5' and tb.tiempoespecifico >= '2' and tb.cantexp >= '$dato4') as tb1";
+        $dat = mysql_query($sql);
+        $reg = @mysql_fetch_assoc($dat);
+        $resultado = array();
+        $resultado[0] = $reg['cant'];
+        $resultado[1] = $reg['ids'];
+        return $resultado;
+    }
+    public function cantpn2($dato1,$dato2,$dato4){
+        $sql = "SELECT COUNT(tb1.id_consultor) as 'cant', GROUP_CONCAT(tb1.id_consultor) as 'ids' from (SELECT tb.id_consultor,tb.tiemgeneral,tb.tiempoespecifico FROM (SELECT experienciaconsultor.id_consultor, 
+(CASE WHEN((SUM(round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2))) is NULL) then '0.00' else (SUM(round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2))) end) as 'tiemgeneral',
+(CASE WHEN((sum(case when (experienciaconsultor.id_tipoexperiencia = '1') then round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2) else 0 end)) is null) then '0.00' else (sum(case when (experienciaconsultor.id_tipoexperiencia = '1') then round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2) else 0 end)) end) as 'tiempoespecifico' 
+from experienciaconsultor 
+INNER join consultores on experienciaconsultor.id_consultor = consultores.id where 
+consultores.id_departamento = '$dato1' and consultores.estado = 4 and consultores.tipo = '$dato2' group by experienciaconsultor.id_consultor) as tb where tb.tiempoespecifico >= '$dato4') as tb1";
+        $dat = mysql_query($sql);
+        $reg = @mysql_fetch_assoc($dat);
+        $resultado = array();
+        $resultado[0] = $reg['cant'];
+        $resultado[1] = $reg['ids'];
+        return $resultado;
+    }
     
 }
 
