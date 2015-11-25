@@ -38,7 +38,7 @@ var theme2 = 'office';
 </div>
 </div>  
 <BR>
-    <a href="/reporte4.php/?ide=<?php echo $ide ?>" >IMPRIMA REPORTE DE TODOS SUS DATOS</a>
+    <a href="/reporte4.php/?ide=<?php echo $datosC['id'] ?>" >IMPRIMA REPORTE DE TODOS SUS DATOS</a>
 <?php
 if($datosC['estado'] == 4){
 ?>

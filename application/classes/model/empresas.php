@@ -217,6 +217,10 @@ class Model_Empresas extends ORM{
         where proveedormateriales.empresa_id = '$id' and proveedormateriales.tipo = '2') where empresas.id = '$id'";
         mysql_query($update);
     }
+    public function selectrubroarea($id){
+        $sql = "select * from rubroarea where CONCAT(',',(select id_rubroarea from empresas where id = '$id'),',') LIKE CONCAT('%,',rubroarea.id,',%')";
+        return db::query(Database::SELECT, $sql)->execute();
+    }
     
 }
 

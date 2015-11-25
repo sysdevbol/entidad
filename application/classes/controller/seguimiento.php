@@ -416,6 +416,13 @@ class Controller_Seguimiento extends Controller_IndexTemplate{
                 $empresas->mail_opcional = $_POST['mail_opcional'];
                 $empresas->otros_documentos = $_POST['otros_documentos'];
                 $empresas->direccion_representante = $_POST['direccion_representante'];
+                if(empty($_POST['reg'])){
+                    $empresas->id_rubroarea = 17;
+                }else{
+                    $registros = array_keys($_POST['reg']);
+                    $registros = implode(",", $registros);
+                    $empresas->id_rubroarea = $registros;
+                }
                 $empresas->save();    
                 
             }

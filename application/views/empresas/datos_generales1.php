@@ -241,7 +241,30 @@ textarea:focus {
                               
                             </div>
                           </div>
-                          
+                          <div class="control-group">
+                            <label class="desc" id="title1" for="Field1"><?php echo 'RUBRO/AREA:'?></label>
+                            <div>
+                              <?php
+                              $omodempresa = new Model_Empresas();
+                              $result = $omodempresa->selectrubroarea($datosE['id']);
+                              ?>  
+                                  CONSTRUCCION<input type="checkbox" name="reg[17]" id = "rubro" <?php foreach ($result as $key => $value) {
+                                if($value['id'] == 17){
+                                  echo "checked";
+                                }
+                                }?>/>
+                                  SUPERVISION<input type="checkbox" name="reg[49]" id = "rubro" <?php foreach ($result as $key => $value) {
+                                if($value['id'] == 49){
+                                  echo "checked";
+                                }
+                                }?>/>
+                                  INSPECTORIA<input type="checkbox" name="reg[50]" id = "rubro" <?php foreach ($result as $key => $value) {
+                                if($value['id'] == 50){
+                                  echo "checked";
+                                }
+                                }?>/>          
+                            </div>
+                          </div>
                           <div class="control-group">
                           <label><?php echo 'Domicilio Principal:'?></label>  
                               <div>
