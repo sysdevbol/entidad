@@ -143,8 +143,9 @@ SELECT experienciaentidad.id_entidad,
 (CASE WHEN((SUM(round(((to_days(experienciaentidad.fecha_fin_contrato) - to_days(experienciaentidad.fecha_ini_contrato)) / 30),2))) is NULL) then '0.00' else (SUM(round(((to_days(experienciaentidad.fecha_fin_contrato) - to_days(experienciaentidad.fecha_ini_contrato)) / 30),2))) end) as 'tiemgeneral',
 (CASE WHEN((sum(case when (experienciaentidad.tipo = '1') then round(((to_days(experienciaentidad.fecha_fin_contrato) - to_days(experienciaentidad.fecha_ini_contrato)) / 30),2) else 0 end)) is null) then '0.00' else (sum(case when (experienciaentidad.tipo = '1') then round(((to_days(experienciaentidad.fecha_fin_contrato) - to_days(experienciaentidad.fecha_ini_contrato)) / 30),2) else 0 end)) end) as 'tiempoespecifico' 
 from experienciaentidad 
-INNER join empresas on experienciaentidad.id_entidad = empresas.id where 
-empresas.ciudad = '$dato1' and empresas.estado = 4 and ('$dat21' like CONCAT('%',empresas.id_rubroarea,'%')) group by experienciaentidad.id_entidad) as tb where tb.tiemgeneral >= '$dato5' and tb.tiempoespecifico >= '$dato4') as tb1";
+INNER join empresas on experienciaentidad.id_entidad = empresas.id where empresas.estado = 4 and 
+(CONCAT('%,',empresas.id_rubroarea,',%') like '%,$dat21,%') and 
+CONCAT(',',(SELECT GROUP_CONCAT(departamentosinteres.id_departamentos) from departamentosinteres where departamentosinteres.id_empresas = experienciaentidad.id_entidad and departamentosinteres.tipo = 'EmpresaProveedor'),',') like '%,$dato1,%' group by experienciaentidad.id_entidad) as tb where tb.tiemgeneral >= $dato5 and tb.tiempoespecifico >= $dato4) as tb1";
         $dat = mysql_query($sql);
         $reg = @mysql_fetch_assoc($dat);
         $resultado = array();

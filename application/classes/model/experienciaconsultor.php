@@ -90,7 +90,7 @@ LEFT JOIN departamentos ON experienciaconsultor.id_departamento = departamentos.
 (CASE WHEN((sum(case when (experienciaconsultor.id_tipoexperiencia = '1') then round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2) else 0 end)) is null) then '0.00' else (sum(case when (experienciaconsultor.id_tipoexperiencia = '1') then round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2) else 0 end)) end) as 'tiempoespecifico' 
 from experienciaconsultor 
 INNER join consultores on experienciaconsultor.id_consultor = consultores.id where 
-consultores.id_departamento = '$dato1' and consultores.estado = 4 and (consultores.tipo = '$dato2' or '$dato21' like CONCAT('%',consultores.id_rubroarea,'%')) group by experienciaconsultor.id_consultor) as tb where tb.tiemgeneral >= '$dato5' and tb.tiempoespecifico >= '$dato4') as tb1";
+CONCAT(',',(SELECT GROUP_CONCAT(departamentosinteres.id_departamentos) from departamentosinteres where departamentosinteres.id_empresas = consultores.id and departamentosinteres.tipo = 'Consultor'),',') like '%,$dato1,%' and consultores.estado = 4 and (consultores.tipo = '$dato2' or (CONCAT('%,',consultores.id_rubroarea,',%') like '%,$dat21,%')) group by experienciaconsultor.id_consultor) as tb where tb.tiemgeneral >= '$dato5' and tb.tiempoespecifico >= '$dato4') as tb1";
         $dat = mysql_query($sql);
         $reg = @mysql_fetch_assoc($dat);
         $resultado = array();
@@ -109,7 +109,7 @@ consultores.id_departamento = '$dato1' and consultores.estado = 4 and (consultor
 (CASE WHEN((sum(case when (experienciaconsultor.id_tipoexperiencia = '1') then round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2) else 0 end)) is null) then '0.00' else (sum(case when (experienciaconsultor.id_tipoexperiencia = '1') then round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2) else 0 end)) end) as 'tiempoespecifico', 
 SUM(CASE WHEN(experienciaconsultor.id_tipoexperiencia = '1') then 1 else 0 end) as 'cantexp'
 from experienciaconsultor INNER join consultores on experienciaconsultor.id_consultor = consultores.id 
-where consultores.id_departamento = '$dato1' and consultores.estado = 4 and (consultores.tipo = '$dato2' or '$dato21' like CONCAT('%',consultores.id_rubroarea,'%')) group by experienciaconsultor.id_consultor) as tb where tb.tiemgeneral >= '$dato5' and tb.tiempoespecifico >= '2' and tb.cantexp >= '$dato4') as tb1";
+where CONCAT(',',(SELECT GROUP_CONCAT(departamentosinteres.id_departamentos) from departamentosinteres where departamentosinteres.id_empresas = consultores.id and departamentosinteres.tipo = 'Consultor'),',') like '%,$dato1,%' and consultores.estado = 4 and (consultores.tipo = '$dato2' or (CONCAT('%,',consultores.id_rubroarea,',%') like '%,$dat21,%')) group by experienciaconsultor.id_consultor) as tb where tb.tiemgeneral >= '$dato5' and tb.tiempoespecifico >= '2' and tb.cantexp >= '$dato4') as tb1";
         $dat = mysql_query($sql);
         $reg = @mysql_fetch_assoc($dat);
         $resultado = array();
@@ -123,7 +123,7 @@ where consultores.id_departamento = '$dato1' and consultores.estado = 4 and (con
 (CASE WHEN((sum(case when (experienciaconsultor.id_tipoexperiencia = '1') then round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2) else 0 end)) is null) then '0.00' else (sum(case when (experienciaconsultor.id_tipoexperiencia = '1') then round(((to_days(fin_contrato) - to_days(inicio_contrato)) / 30),2) else 0 end)) end) as 'tiempoespecifico' 
 from experienciaconsultor 
 INNER join consultores on experienciaconsultor.id_consultor = consultores.id where 
-consultores.id_departamento = '$dato1' and consultores.estado = 4 and consultores.tipo = '$dato2' group by experienciaconsultor.id_consultor) as tb where tb.tiempoespecifico >= '$dato4') as tb1";
+CONCAT(',',(SELECT GROUP_CONCAT(departamentosinteres.id_departamentos) from departamentosinteres where departamentosinteres.id_empresas = consultores.id and departamentosinteres.tipo = 'Consultor'),',') like '%,$dato1,%' and consultores.estado = 4 and consultores.tipo = '$dato2' group by experienciaconsultor.id_consultor) as tb where tb.tiempoespecifico >= $dato4) as tb1";
         $dat = mysql_query($sql);
         $reg = @mysql_fetch_assoc($dat);
         $resultado = array();

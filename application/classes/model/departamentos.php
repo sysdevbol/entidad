@@ -4,7 +4,7 @@ defined('SYSPATH') or die ('no tiene acceso');
 class Model_Departamentos extends ORM{
     protected $_table_names_plural = false;
     public function listadepto(){
-            $sql="SELECT * FROM departamentos";
+            $sql="SELECT * FROM departamentos where departamento <> 'NACIONAL'";
             $deptos = array();
 
            $result = db::query(Database::SELECT, $sql)->execute();
